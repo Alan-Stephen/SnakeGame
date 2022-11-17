@@ -1,5 +1,7 @@
 package com.example.snakeproject;
-
+/**
+ * @deprecated
+ * */
 public class Snake {
 	
 		private static final long serialVersionUID = -3641221053272056036L;

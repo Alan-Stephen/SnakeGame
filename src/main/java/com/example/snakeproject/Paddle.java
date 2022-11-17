@@ -1,7 +1,9 @@
 package com.example.snakeproject;
 import java.awt.*;
 
-
+/**
+ * @deprecated
+ * */
 public class Paddle {
 
 
