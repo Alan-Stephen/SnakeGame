@@ -5,15 +5,13 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
+// TODO: Seperate to MVC
+
+// This class needs to be split up.
 
 /**
- * 
- * @Project Snakee
- * @Description Spilaðu leikinn
- * @Author Sigurður Sigurðardóttir
- * @version Ekki viss
- */ 
-
+ * Frame of program, contains primary game loop.
+ */
 public class Play extends MyFrame
 {
 
@@ -25,13 +23,20 @@ public class Play extends MyFrame
 	public Image background = ImageUtil.images.get("UI-background");
 	public Image fail = ImageUtil.images.get("game-scene-01");
 
+	/**
+	 * handles keyPresses.
+	 * */
 	@Override
 	public void keyPressed(KeyEvent e)
 	{
-		super.keyPressed(e);
+		super.keyPressed(e); //useless
 		mySnake.keyPressed(e);
 	}
 
+	/**
+	 * renders background, checks if snake is alive, creates new food if no
+	 * food is on screen, updates score.
+	 * */
 	@Override
 	public void paint(Graphics g)
 	{
@@ -57,19 +62,16 @@ public class Play extends MyFrame
 		drawScore(g);
 	}
 
+	/**
+	 * Draws score on screen
+	 * */
 	public void drawScore(Graphics g)
 	{
 		g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
 		g.setColor(Color.MAGENTA);
 		g.drawString("SCORE : " + mySnake.score, 20, 40);
 	}
-
-	public static void main(String[] args)
-	{
-		new Play().loadFrame();
-		MusicPlayer.getMusicPlay("src/main/resources/frogger.mp3");
-
-	}
+	// TO DELETE BLOW
 /*	
 	public static void main(String[] args)
 	{

@@ -20,7 +20,7 @@ import javax.swing.JPanel;
  * @version Ekki viss
  */ 
 
-
+// TODO: Seperate MyFrame and Play into MVC.
 public class MyFrame extends JPanel implements KeyListener
 {
 	private static final long serialVersionUID = -3149926831770554380L;
@@ -32,6 +32,10 @@ public class MyFrame extends JPanel implements KeyListener
 		jFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(MyFrame.class.getResource("/snake-logo.png")));
 	}
 
+	/** Sets up JFrame by naming it and specifying other options and adds
+	 * current class instance to the JFrame, also calls setVisible and MyThread.
+	 *
+	 * */
 	public void loadFrame()
 	{
 		/*
@@ -57,6 +61,10 @@ public class MyFrame extends JPanel implements KeyListener
 
 		new MyThread().start();
 	}
+
+	/** Infinitely calls the repaint function until exception is thrown.
+	 *
+	 * */
 	class MyThread extends Thread
 	{
 		@Override
@@ -98,12 +106,17 @@ public class MyFrame extends JPanel implements KeyListener
 
 	}
 
+	/** Visual repersentation of snake
+	 *
+	 * */
+
+	// Snake object only has one use so maybe we can reduce it to a single class.
 	public static class MySnake extends SnakeObject implements movable
 	{
 		// Leikjabreytan.
 		private int speed_XY;
 		private int length;
-		private int num; // ?
+		private int num; // ? delete?
 		public int score = 0;
 
 		private static final BufferedImage IMG_SNAKE_HEAD = (BufferedImage) ImageUtil.images.get("snake-head-right");
@@ -113,6 +126,11 @@ public class MyFrame extends JPanel implements KeyListener
 		private static BufferedImage newImgSnakeHead;
 		boolean up, down, left, right = true;
 
+		/** Spawns snake at specified parameters.
+		 * @param x x coord of spawned snake
+		 * @param y y cord of spawned snake
+		 *
+		 * */
 		public MySnake(int x, int y)
 		{
 			this.l = true;
@@ -138,11 +156,15 @@ public class MyFrame extends JPanel implements KeyListener
 			return length;
 		}
 
+		// set length
 		public void changeLength(int length)
 		{
 			this.length = length;
 		}
 
+		/**
+		 * handles controls, rotates snake head appropriate direction when key pressed.
+		 * */
 		public void keyPressed(KeyEvent e)
 		{
 			// athugaðu lykilinn
@@ -202,6 +224,9 @@ public class MyFrame extends JPanel implements KeyListener
 		}
 
 
+		/** changes velocity of snake depending on what key is pressed.
+		 *
+		 * */
 		public void move()
 		{
 			// láta kvikindið hreyfa sig
@@ -221,6 +246,11 @@ public class MyFrame extends JPanel implements KeyListener
 
 		}
 
+
+		/** checks if outOfBounds or if it's eaten it's body.
+		 * controls movement by dynamically deleting and adding bodyPoints
+		 * handles movement changes.
+		 * */
 		@Override
 		public void draw(Graphics g)
 		{
@@ -239,6 +269,7 @@ public class MyFrame extends JPanel implements KeyListener
 			move();
 		}
 
+		/** checks if two body points have colided if so ests l = false	*/
 		public void eatBody()
 		{
 			for (Point point : bodyPoints)
@@ -253,6 +284,10 @@ public class MyFrame extends JPanel implements KeyListener
 			}
 		}
 
+
+		/** Draws the snake bodyPoints.
+		 *
+		 * */
 		public void drawBody(Graphics g)
 		{
 			int length = bodyPoints.size() - 1 - num;
@@ -264,6 +299,7 @@ public class MyFrame extends JPanel implements KeyListener
 			}
 		}
 
+		// checks if out of bounds and if so sets l = false
 		private void outofBounds()
 		{
 			boolean xOut = (x <= 0 || x >= (870 - w));
@@ -275,6 +311,9 @@ public class MyFrame extends JPanel implements KeyListener
 		}
 	}
 
+	/** Interface for any visible objects on board.
+	 *
+	 * */
 	public abstract static class SnakeObject
 	{
 		int x;
@@ -283,7 +322,7 @@ public class MyFrame extends JPanel implements KeyListener
 		int w;
 		int h;
 
-		public boolean l;
+		public boolean l; //not necesary
 
 
 		public abstract void draw(Graphics g);
