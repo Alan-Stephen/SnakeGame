@@ -1,12 +1,10 @@
 package com.example.snakeproject;
 
 /**
- * 
- * @Project Snakee
- * @Description Fyrsta viðmótið
- * @Author Sigurður Sigurðardóttir
- * @version Ekki viss
- */ 
+ * Interface for any moveable objects
+ */
+
+// not useful should be deleted. creates uncessary complication.
 
 public interface movable
 {

@@ -4,6 +4,12 @@ import java.awt.Image;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Helps image access by allocating images to a hashmap so they are easily and
+ * effeciently available.
+ * */
+
+// TODO: Make into Singleton
 public class ImageUtil
 {
 	public static Map<String, Image> images = new HashMap<>();
