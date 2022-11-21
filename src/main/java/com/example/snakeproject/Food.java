@@ -33,7 +33,7 @@ public class Food extends MyFrame.SnakeObject
 	/**
 	 * checks if snake has touched food, if it has increments snake length and score.
 	 * */
-	public void eaten(MyFrame.MySnake mySnake)	{
+	public void eaten(Snake mySnake)	{
 
 		if (mySnake.getRectangle().intersects(this.getRectangle()) && l && mySnake.l)		{
 			this.l = false;
