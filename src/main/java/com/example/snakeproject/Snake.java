@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *
+ * Handles game controls and drawing of the snake.
  * */
 
 public class Snake extends MyFrame.SnakeObject
@@ -198,6 +198,9 @@ public class Snake extends MyFrame.SnakeObject
         }
     }
 
+    /**
+     * checks if snake position is out of bounds.
+     * */
     // checks if out of bounds and if so sets l = false
     private void outofBounds()
     {
