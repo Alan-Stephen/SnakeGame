@@ -17,7 +17,7 @@ public class Play extends MyFrame
 
 	private static final long serialVersionUID = -3641221053272056036L;
 
-	public MySnake mySnake = new MySnake(100, 100);// x , y
+	public Snake mySnake = new Snake(100, 100);// x , y
 	public Food food = new Food();
 
 	public Image background = ImageUtil.images.get("UI-background");
