@@ -1,8 +1,13 @@
 package com.example.snakeproject;
 
-import java.awt.*;
-import java.awt.event.KeyEvent;
+import javafx.geometry.Point2D;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+
+import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,17 +15,17 @@ import java.util.List;
  * Handles game controls and drawing of the snake.
  * */
 
-public class Snake extends MyFrame.SnakeObject
+public class Snake extends VisibleObject
 {
     // Leikjabreytan.
     private int speed_XY;
     private int length;
-    private int num; // ? delete?
+    private int num;
     public int score = 0;
 
     private static final Image IMG_SNAKE_HEAD = ImageUtil.images.get("snake-head-right");
 
-    public static List<Point> bodyPoints = new LinkedList<>();
+    public static List<Point2D> bodyPoints = new LinkedList<>();
 
     private static Image newImgSnakeHead;
     boolean up, down, left, right = true;
@@ -45,7 +50,7 @@ public class Snake extends MyFrame.SnakeObject
         /*
          * Attention : ?
          */
-        this.num = w / speed_XY;
+        this.num = (int) (w / speed_XY);
         newImgSnakeHead = IMG_SNAKE_HEAD;
 
     }
@@ -67,9 +72,9 @@ public class Snake extends MyFrame.SnakeObject
     public void keyPressed(KeyEvent e)
     {
         // athugaðu lykilinn
-        switch (e.getKeyCode())
+        switch (e.getCode())
         {
-            case KeyEvent.VK_UP:
+            case UP:
                 if (!down)
                 {
                     up = true;
@@ -81,7 +86,7 @@ public class Snake extends MyFrame.SnakeObject
                 }
                 break;
 
-            case KeyEvent.VK_DOWN:
+            case DOWN:
                 if (!up)
                 {
                     up = false;
@@ -93,7 +98,7 @@ public class Snake extends MyFrame.SnakeObject
                 }
                 break;
 
-            case KeyEvent.VK_LEFT:
+            case LEFT:
                 if (!right)
                 {
                     up = false;
@@ -106,7 +111,7 @@ public class Snake extends MyFrame.SnakeObject
                 }
                 break;
 
-            case KeyEvent.VK_RIGHT:
+            case RIGHT:
                 if (!left)
                 {
                     up = false;
@@ -151,18 +156,18 @@ public class Snake extends MyFrame.SnakeObject
      * handles movement changes.
      * */
     @Override
-    public void draw(Graphics g)
+    public void draw(GraphicsContext g)
     {
         outofBounds();
         eatBody();
 
-        bodyPoints.add(new Point(x, y));
+        bodyPoints.add(new Point2D(x, y));
 
         if (bodyPoints.size() == (this.length + 1) * num)
         {
             bodyPoints.remove(0);
         }
-        g.drawImage(newImgSnakeHead, x, y, null);
+        g.drawImage(newImgSnakeHead, x, y);
         drawBody(g);
 
         move();
@@ -171,9 +176,9 @@ public class Snake extends MyFrame.SnakeObject
     /** checks if two body points have colided if so ests l = false	*/
     public void eatBody()
     {
-        for (Point point : bodyPoints)
+        for (Point2D point : bodyPoints)
         {
-            for (Point point2 : bodyPoints)
+            for (Point2D point2 : bodyPoints)
             {
                 if (point.equals(point2) && point != point2)
                 {
@@ -187,21 +192,26 @@ public class Snake extends MyFrame.SnakeObject
     /** Draws the snake bodyPoints.
      *
      * */
-    public void drawBody(Graphics g)
-    {
-        int length = bodyPoints.size() - 1 - num;
+    public void drawBody(GraphicsContext g) {
+        int length = (bodyPoints.size() - 1 - num);
 
-        for (int i = length; i >= num; i -= num)
-        {
-            Point point = bodyPoints.get(i);
-            g.drawImage(this.i, point.x, point.y, null);
+
+        System.out.println("Length :" + length + " size: " + bodyPoints.size() +" num: " + num);
+        for (int i = length; i >= num ; i -= num) {
+            Point2D point = bodyPoints.get((int)i);
+            g.drawImage(this.i, point.getX(), point.getY());
         }
     }
 
+    public void drawScore(GraphicsContext g){
+        g.setFont(new Font("Comic Sans", 30));
+        g.setFill(Color.MAGENTA);
+        g.strokeText("SCORE : " + score, 20, 40);
+    }
+
     /**
-     * checks if snake position is out of bounds.
-     * */
-    // checks if out of bounds and if so sets l = false
+     * checks if snake position is out of bounds if so sets l.false.
+     */
     private void outofBounds()
     {
         boolean xOut = (x <= 0 || x >= (870 - w));
