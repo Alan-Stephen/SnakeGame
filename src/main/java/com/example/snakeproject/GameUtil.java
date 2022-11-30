@@ -4,6 +4,7 @@ import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -46,6 +47,7 @@ public class GameUtil
 
 		SnapshotParameters snapshot = new SnapshotParameters();
 
+		snapshot.setFill(Color.TRANSPARENT);
 		return image.snapshot(snapshot,null);
 	}
 }
