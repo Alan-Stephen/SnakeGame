@@ -1,9 +1,11 @@
 package com.example.snakeproject;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
+
+
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import java.awt.event.KeyEvent;
 // TODO: Seperate to MVC
 
@@ -20,57 +22,9 @@ public class Play extends MyFrame
 	public Snake mySnake = new Snake(100, 100);// x , y
 	public Food food = new Food();
 
-	public Image background = ImageUtil.images.get("UI-background");
-	public Image fail = ImageUtil.images.get("game-scene-01");
-
-	/**
-	 * handles keyPresses.
-	 * */
-	@Override
-	public void keyPressed(KeyEvent e)
-	{
-		super.keyPressed(e); //useless
-		mySnake.keyPressed(e);
-	}
-
-	/**
-	 * renders background, checks if snake is alive, creates new food if no
-	 * food is on screen, updates score.
-	 * */
-	@Override
-	public void paint(Graphics g)
-	{
-		super.paint(g);
-		g.drawImage(background, 0, 0, null);
-
-		// Ákveða stöðu leiksins.
-		if (mySnake.l)
-		{
-			mySnake.draw(g);
-			if (food.l)
-			{
-				food.draw(g);
-				food.eaten(mySnake);
-			} else
-			{
-				food = new Food();
-			}
-		} else
-		{
-			g.drawImage(fail, 0, 0, null);
-		}
-		drawScore(g);
-	}
-
 	/**
 	 * Draws score on screen
 	 * */
-	public void drawScore(Graphics g)
-	{
-		g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
-		g.setColor(Color.MAGENTA);
-		g.drawString("SCORE : " + mySnake.score, 20, 40);
-	}
 	// TO DELETE BLOW
 /*	
 	public static void main(String[] args)

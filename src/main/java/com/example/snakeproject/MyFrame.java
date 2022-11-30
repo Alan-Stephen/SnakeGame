@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.image.BufferedImage;
+import javafx.scene.image.Image;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -105,22 +105,5 @@ public class MyFrame extends JPanel implements KeyListener
 	/** Interface for any visible objects on board.
 	 *
 	 * */
-	public abstract static class SnakeObject
-	{
-		int x;
-		int y;
-		Image i;
-		int w;
-		int h;
 
-		public boolean l; //not necesary
-
-
-		public abstract void draw(Graphics g);
-
-		public Rectangle getRectangle()
-		{
-			return new Rectangle(x, y, w, h);
-		}
-	}
 }
