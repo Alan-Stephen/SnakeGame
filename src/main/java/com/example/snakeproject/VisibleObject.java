@@ -9,8 +9,8 @@ public abstract class VisibleObject {
     double x;
     double y;
     Image i;
-    int w;
-    int h;
+    double w;
+    double h;
 
     public boolean l; //not necesary
 
