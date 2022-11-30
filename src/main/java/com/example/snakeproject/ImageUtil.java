@@ -1,6 +1,6 @@
 package com.example.snakeproject;
 
-import java.awt.Image;
+import javafx.scene.image.Image;
 import java.util.HashMap;
 import java.util.Map;
 

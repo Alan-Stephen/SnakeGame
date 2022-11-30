@@ -2,7 +2,7 @@ package com.example.snakeproject;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
+import javafx.scene.image.Image;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -18,11 +18,11 @@ public class Snake extends MyFrame.SnakeObject
     private int num; // ? delete?
     public int score = 0;
 
-    private static final BufferedImage IMG_SNAKE_HEAD = (BufferedImage) ImageUtil.images.get("snake-head-right");
+    private static final Image IMG_SNAKE_HEAD = ImageUtil.images.get("snake-head-right");
 
     public static List<Point> bodyPoints = new LinkedList<>();
 
-    private static BufferedImage newImgSnakeHead;
+    private static Image newImgSnakeHead;
     boolean up, down, left, right = true;
 
     /** Spawns snake at specified parameters.
@@ -36,8 +36,8 @@ public class Snake extends MyFrame.SnakeObject
         this.x = x;
         this.y = y;
         this.i = ImageUtil.images.get("snake-body");
-        this.w = i.getWidth(null);
-        this.h = i.getHeight(null);
+        this.w = (int) i.getWidth();
+        this.h = (int) i.getHeight();
 
         this.speed_XY = 5;
         this.length = 1;
@@ -77,7 +77,7 @@ public class Snake extends MyFrame.SnakeObject
                     left = false;
                     right = false;
 
-                    newImgSnakeHead = (BufferedImage) GameUtil.rotateImage(IMG_SNAKE_HEAD, -90);
+                    newImgSnakeHead = GameUtil.rotateImage(IMG_SNAKE_HEAD, -90);
                 }
                 break;
 
@@ -89,7 +89,7 @@ public class Snake extends MyFrame.SnakeObject
                     left = false;
                     right = false;
 
-                    newImgSnakeHead = (BufferedImage) GameUtil.rotateImage(IMG_SNAKE_HEAD, 90);
+                    newImgSnakeHead = GameUtil.rotateImage(IMG_SNAKE_HEAD, 90);
                 }
                 break;
 
@@ -101,7 +101,7 @@ public class Snake extends MyFrame.SnakeObject
                     left = true;
                     right = false;
 
-                    newImgSnakeHead = (BufferedImage) GameUtil.rotateImage(IMG_SNAKE_HEAD, -180);
+                    newImgSnakeHead = GameUtil.rotateImage(IMG_SNAKE_HEAD, -180);
 
                 }
                 break;
