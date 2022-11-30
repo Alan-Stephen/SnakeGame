@@ -1,4 +1,7 @@
 package com.example.snakeproject;
+
+import javafx.application.Application;
+
 /**
  * main class
  * */
@@ -7,7 +10,7 @@ package com.example.snakeproject;
 public class Main {
     public static void main(String[] args)
     {
-        new Play().loadFrame();
-        MusicPlayer.getMusicPlay("src/main/resources/frogger.mp3");
+        Application.launch(App.class);
+        //MusicPlayer.getMusicPlay("src/main/resources/frogger.mp3");
     }
 }
