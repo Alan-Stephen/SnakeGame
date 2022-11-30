@@ -105,22 +105,5 @@ public class MyFrame extends JPanel implements KeyListener
 	/** Interface for any visible objects on board.
 	 *
 	 * */
-	public abstract static class SnakeObject
-	{
-		int x;
-		int y;
-		Image i;
-		int w;
-		int h;
 
-		public boolean l; //not necesary
-
-
-		public abstract void draw(Graphics g);
-
-		public Rectangle getRectangle()
-		{
-			return new Rectangle(x, y, w, h);
-		}
-	}
 }
