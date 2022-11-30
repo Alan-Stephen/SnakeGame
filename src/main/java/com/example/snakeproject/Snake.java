@@ -214,8 +214,8 @@ public class Snake extends VisibleObject
      */
     private void outofBounds()
     {
-        boolean xOut = (x <= 0 || x >= (870 - w));
-        boolean yOut = (y <= 40 || y >= (560 - h));
+        boolean xOut = (x <= 0 || x >= (870));
+        boolean yOut = (y <= 0 || y >= (560));
         if (xOut || yOut)
         {
             l = false;
