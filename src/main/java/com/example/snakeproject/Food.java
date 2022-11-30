@@ -1,5 +1,7 @@
 package com.example.snakeproject;
 
+import javafx.scene.canvas.GraphicsContext;
+
 import java.awt.Graphics;
 import java.util.Random;
 import java.awt.Graphics2D;
@@ -46,8 +48,8 @@ public class Food extends MyFrame.SnakeObject
 	 * draws food icon
 	 * */
 	@Override
-	public void draw(Graphics g)
+	public void draw(GraphicsContext g)
 	{
-		g.drawImage(i, x, y, null);
+		g.drawImage(i, x, y);
 	}
 }
