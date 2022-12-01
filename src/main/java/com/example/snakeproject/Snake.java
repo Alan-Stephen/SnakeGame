@@ -28,7 +28,7 @@ public class Snake extends VisibleObject
     public static List<Point2D> bodyPoints = new LinkedList<>();
 
     private static Image newImgSnakeHead;
-    boolean up, down, left, right = true;
+    Direction direction = Direction.RIGHT;
 
     /** Spawns snake at specified parameters.
      * @param x x coord of spawned snake
@@ -75,50 +75,30 @@ public class Snake extends VisibleObject
         switch (e.getCode())
         {
             case UP:
-                if (!down)
-                {
-                    up = true;
-                    down = false;
-                    left = false;
-                    right = false;
-
+                if (!(direction == Direction.DOWN)) {
+                    direction = Direction.UP;
                     newImgSnakeHead = GameUtil.rotateImage(IMG_SNAKE_HEAD, -90);
                 }
                 break;
 
             case DOWN:
-                if (!up)
-                {
-                    up = false;
-                    down = true;
-                    left = false;
-                    right = false;
-
+                if (!(direction == Direction.UP)) {
+                    direction = Direction.DOWN;
                     newImgSnakeHead = GameUtil.rotateImage(IMG_SNAKE_HEAD, 90);
                 }
                 break;
 
             case LEFT:
-                if (!right)
-                {
-                    up = false;
-                    down = false;
-                    left = true;
-                    right = false;
-
+                if (!(direction == Direction.RIGHT)) {
+                    direction = Direction.LEFT;
                     newImgSnakeHead = GameUtil.rotateImage(IMG_SNAKE_HEAD, -180);
 
                 }
                 break;
 
             case RIGHT:
-                if (!left)
-                {
-                    up = false;
-                    down = false;
-                    left = false;
-                    right = true;
-
+                if (!(direction == Direction.LEFT)) {
+                    direction = Direction.RIGHT;
                     newImgSnakeHead = IMG_SNAKE_HEAD;
                 }
 
@@ -131,23 +111,13 @@ public class Snake extends VisibleObject
     /** changes velocity of snake depending on what key is pressed.
      *
      * */
-    public void move()
-    {
-        // láta kvikindið hreyfa sig
-        if (up)
-        {
-            y -= speed_XY;
-        } else if (down)
-        {
-            y += speed_XY;
-        } else if (left)
-        {
-            x -= speed_XY;
-        } else if (right)
-        {
-            x += speed_XY;
+    public void move() {
+        switch (direction) {
+            case UP -> y -= speed_XY;
+            case LEFT -> x -= speed_XY;
+            case RIGHT -> x += speed_XY;
+            case DOWN -> y += speed_XY;
         }
-
     }
 
 
@@ -220,6 +190,13 @@ public class Snake extends VisibleObject
         {
             l = false;
         }
+    }
+
+    enum Direction {
+        UP,
+        DOWN,
+        LEFT,
+        RIGHT,
     }
 }
 
