@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id = "deathScene" prefHeight="560.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.snakeproject.DeathController">
+   <children>
+      <ImageView fitHeight="560.0" fitWidth="870.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@UI-background2.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="251.0" layoutY="241.0" text="GAME OVER">
+         <font>
+            <Font name="DejaVu Serif Bold" size="58.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nameField" layoutX="280.0" layoutY="358.0" promptText="Enter Name">
+         <font>
+            <Font name="DejaVu Sans Condensed Bold" size="13.0" />
+         </font>
+      </TextField>
+      <Button fx:id="submitButton" layoutX="475.0" layoutY="357.0" mnemonicParsing="false" text="Submit Score" />
+   </children>
+</AnchorPane>
