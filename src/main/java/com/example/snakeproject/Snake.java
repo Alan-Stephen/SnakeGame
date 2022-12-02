@@ -37,7 +37,7 @@ public class Snake extends VisibleObject
      * */
     public Snake(int x, int y)
     {
-        this.l = true;
+        setL(true);
         this.x = x;
         this.y = y;
         this.i = ImageUtil.images.get("snake-body");
@@ -182,7 +182,7 @@ public class Snake extends VisibleObject
             {
                 if (point.equals(point2) && point != point2)
                 {
-                    this.l = false;
+                    setL(false);
                 }
             }
         }
@@ -218,7 +218,7 @@ public class Snake extends VisibleObject
         boolean yOut = (y <= 0 || y >= (560));
         if (xOut || yOut)
         {
-            l = false;
+            setL(false);
         }
     }
 }
