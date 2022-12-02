@@ -21,7 +21,7 @@ public class Food extends VisibleObject
 	 * generates food at random location with random icon.
 	 * */
 	public Food()	{
-		this.l = true;
+		setL(true);
 
 		this.i = ImageUtil.images.get(String.valueOf(new Random().nextInt(10)));
 
@@ -37,8 +37,8 @@ public class Food extends VisibleObject
 	 * */
 	public void eaten(Snake mySnake)	{
 
-		if (mySnake.getRectangle().intersects(getRectangle().getBoundsInParent()) && l && mySnake.l)		{
-			this.l = false;
+		if (mySnake.getRectangle().intersects(getRectangle().getBoundsInParent()) && isL() && mySnake.isL())		{
+			setL(false);
 			mySnake.changeLength(mySnake.getLength() + 1);
 			mySnake.score += 521;
 		}

@@ -9,14 +9,15 @@ import javafx.scene.paint.Color;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javax.imageio.ImageIO;
 
 /**
  * Helper class with methods to handle images.
  * */
-public class GameUtil
-{
+public class GameUtil {
 	/**
 	 * returns image from path ImagePath
 	 * @param imagePath path to get image from.

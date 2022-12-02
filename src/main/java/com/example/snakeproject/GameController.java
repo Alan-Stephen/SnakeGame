@@ -2,14 +2,18 @@ package com.example.snakeproject;
 
 import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
+import javafx.beans.property.BooleanProperty;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.awt.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -21,7 +25,13 @@ public class GameController implements Initializable {
     @FXML
     Canvas canvas;
 
-    Snake mySnake = new Snake(100,100);
+    private Snake mySnake = new Snake(100,100);
+
+    public boolean hasFail(){return !mySnake.isL();}
+
+    public Snake getMySnake() {return mySnake;}
+
+    public BooleanProperty snakeAliveProperty(){return mySnake.lProperty();}
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -39,10 +49,10 @@ public class GameController implements Initializable {
                 frame++;
                 if(frame % 2 == 0){
                     gc.drawImage(background, 0, 0);
-                    if (mySnake.l)
+                    if (mySnake.isL())
                     {
                         mySnake.draw(gc);
-                        if (food.l)
+                        if (food.isL())
                         {
                             food.draw(gc);
                             food.eaten(mySnake);
@@ -53,6 +63,7 @@ public class GameController implements Initializable {
                     } else
                     {
                         gc.drawImage(fail, 0, 0);
+                        mySnake.setL(false);
                     }
                     mySnake.drawScore(gc);
                 }
