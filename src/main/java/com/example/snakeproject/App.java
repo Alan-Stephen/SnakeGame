@@ -1,9 +1,6 @@
 package com.example.snakeproject;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
@@ -23,17 +20,19 @@ public class App extends Application {
         GameController gameController = gameLoader.getController();
         DeathController deathController = deathLoader.getController();
 
-        gameController.getMySnake().lProperty()
+        gameController.getSnakeModel().activeProperty()
                 .addListener( ((observableValue, oldVal, newVal) -> {
                     if (newVal){}
                     else{stage.setScene(deathController.deathScene.getScene());}
         }));
 
         gameScene.addEventHandler(KeyEvent.KEY_PRESSED,
-                new GameKeyListener(gameController.getMySnake()));
+                new GameKeyListener(
+                        gameController.getSnakeModel(),
+                        gameController.getSnakeView()));
 
         deathController.submitButton.setOnAction(actionEvent -> {
-            deathController.addToLeaderBoards(gameController.getMySnake().score);
+            deathController.addToLeaderBoards(gameController.getSnakeModel().score);
             ((LeaderBoardController) leaderBoardsLoader.getController())
                     .updateList();
             stage.setScene(leaderBoardsScene);
@@ -45,11 +44,12 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
+        stage.setResizable(false);
 
         gameLoader = new FXMLLoader(getClass().getResource("/fxml/gameScene.fxml"));
         menuLoader = new FXMLLoader(getClass().getResource("/fxml/mainMenu.fxml"));
         deathLoader = new FXMLLoader(getClass().getResource("/fxml/deathScene.fxml"));
-        leaderBoardsLoader = new FXMLLoader(getClass().getResource("/fxml/leaderBoards.fxml"));
+        leaderBoardsLoader = new FXMLLoader(getClass().getResource("/fxml/leaderBoardsScene.fxml"));
 
         // Load Scenes so Controllers can be accessed
         try{

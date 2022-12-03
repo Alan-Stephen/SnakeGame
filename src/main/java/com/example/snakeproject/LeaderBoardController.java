@@ -20,7 +20,7 @@ import java.util.Scanner;
 
 public class LeaderBoardController implements Initializable {
 
-    public String CSV_PATH = "src/main/resources/images/leaderBoards.csv";
+    public String CSV_PATH = "src/main/resources/other/leaderBoards.csv";
 
     @FXML
     TableView<LeaderBoardEntry> leaderBoardsTable;
