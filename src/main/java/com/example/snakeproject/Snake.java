@@ -25,7 +25,7 @@ public class Snake extends VisibleObject
 
     private static final Image IMG_SNAKE_HEAD = ImageUtil.images.get("snake-head-right");
 
-    public static List<Point2D> bodyPoints = new LinkedList<>();
+    public List<Point2D> bodyPoints = new LinkedList<>();
 
     private static Image newImgSnakeHead;
     boolean up, down, left, right = true;
