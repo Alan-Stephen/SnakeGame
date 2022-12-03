@@ -17,12 +17,25 @@ import javax.imageio.ImageIO;
 /**
  * Helper class with methods to handle images.
  * */
+
+// TODO : MAKE INTO SINGLETON
 public class GameUtil {
+
+	private static GameUtil instance;
+
+	public static GameUtil getInstance() {
+		if(instance == null){
+			instance = new GameUtil();
+		}
+		return instance;
+	}
+
+	private GameUtil(){};
 	/**
 	 * returns image from path ImagePath
 	 * @param imagePath path to get image from.
 	 * */
-	public static Image getImage(String imagePath)
+	public Image getImage(String imagePath)
 	{
 		Image i = null;
 		try
@@ -42,7 +55,7 @@ public class GameUtil {
 	 * @param degree angle to rotate image
 	 * @param i image to rotate.
 	 * */
-	public static Image rotateImage(final Image i, final int degree) {
+	public Image rotateImage(final Image i, final int degree) {
 		ImageView image = new ImageView(i);
 		image.setRotate(degree);
 
