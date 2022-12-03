@@ -33,9 +33,12 @@ public class GameController implements Initializable {
 
     public BooleanProperty snakeAliveProperty(){return mySnake.lProperty();}
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public boolean resetGame(){
+        this.mySnake = new Snake(100,100);
+        return true;
+    }
 
+    private void startGame() {
         Image background = ImageUtil.images.get("UI-background");
         Image fail = ImageUtil.images.get("game-scene-01");
 
@@ -62,7 +65,6 @@ public class GameController implements Initializable {
                         }
                     } else
                     {
-                        gc.drawImage(fail, 0, 0);
                         mySnake.setL(false);
                     }
                     mySnake.drawScore(gc);
@@ -71,6 +73,10 @@ public class GameController implements Initializable {
             }
         };
         loop.start();
+    }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        startGame();
     }
 }
