@@ -52,7 +52,7 @@ public class DeathController implements Initializable {
         System.out.println("writing");
         try {
             PrintWriter writer = new PrintWriter(new FileOutputStream(
-                    new File("src/main/resources/images/leaderBoards.csv"),
+                    new File("src/main/resources/other/leaderBoards.csv"),
                     true /* append = true */));
             System.out.printf("%s, %d\n",getName(),score);
             writer.printf("%s,%d\n",getName(),score);
