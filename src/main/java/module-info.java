@@ -7,4 +7,6 @@ module com.example.snakeproject {
 
     opens com.example.snakeproject to javafx.fxml;
     exports com.example.snakeproject;
+    exports com.example.snakeproject.Controllers;
+    opens com.example.snakeproject.Controllers to javafx.fxml;
 }
