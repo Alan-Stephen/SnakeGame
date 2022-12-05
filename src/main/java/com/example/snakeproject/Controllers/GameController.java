@@ -1,5 +1,7 @@
-package com.example.snakeproject;
+package com.example.snakeproject.Controllers;
 
+
+import com.example.snakeproject.*;
 import javafx.animation.AnimationTimer;
 import javafx.beans.property.BooleanProperty;
 import javafx.fxml.FXML;
@@ -7,7 +9,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,30 +25,33 @@ public class GameController implements Initializable {
     @FXML
     Canvas canvas;
 
+    @FXML
+    ImageView background;
+
     private SnakeModel snakeModel = new SnakeModel(100,100);
-    private SnakeView snakeView = new SnakeView();
+    private Theme theme = new
+            Theme("gameBackground0","snake-head-right","snake-body");
+
 
 
     public SnakeModel getSnakeModel() {return snakeModel;}
-    public SnakeView getSnakeView() {return snakeView;}
-
-    public BooleanProperty snakeAliveProperty(){return snakeModel.activeProperty();}
+    public SnakeView getSnakeView() {return theme.getSnakeView();}
 
     public boolean resetGame(){
         this.snakeModel = new SnakeModel(100,100);
-        snakeView = new SnakeView();
+        getSnakeView().resetHead();
         return true;
     }
 
-    private void startGame() {
-        ImageUtil util = ImageUtil.getInstance();
-        Image background = util.getImage("UI-background");
+    public void setTheme(Theme theme){
+        this.theme = theme;
+        background.setImage(theme.getBackground());
+    }
 
+    private void startGame() {
         AnimationTimer loop = new AnimationTimer() {
             int frame = 0;
             FoodModel foodModel = new FoodModel();
-            FoodView foodView = new FoodView();
-
             GraphicsContext gc = canvas.getGraphicsContext2D();
 
             //rewrite to have less indentation
@@ -53,35 +61,39 @@ public class GameController implements Initializable {
                 if(frame % 2 == 0){}
                 else{return;}
 
-                gc.drawImage(background, 0, 0);
-
                 if(snakeModel.getActive()){}
                 else{return;}
 
-                snakeView.draw(gc, snakeModel.getX(), snakeModel.getY());
-                snakeView.drawBody(gc, snakeModel.bodyPoints);
+                gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+
+                theme.drawSnake(gc, snakeModel.getX(),
+                        snakeModel.getY(),snakeModel.bodyPoints);
 
                 if(foodModel.getActive()){
-                    foodView.draw(gc,foodModel.getX(), foodModel.getY());
+                    theme.drawFood(gc,foodModel.getX(), foodModel.getY());
                     foodModel.eaten(snakeModel);
                 } else{
                     foodModel = new FoodModel();
-                    foodView = new FoodView();
+                    theme.resetFood();
                 }
-                //todo: move draw score to this class
-                snakeView.drawScore(gc, snakeModel.score);
+                drawScore(gc, snakeModel.score);
                 snakeModel.move();
-                snakeModel.updateBodyPoints(snakeView.bodyPointSpacing);
+                snakeModel.updateBodyPoints(getSnakeView().bodyPointSpacing);
                 snakeModel.checkIfAlive();
             }
         };
         loop.start();
     }
 
-    // BUNCH OF FUCKING DRAW FUNCTIONS DOWN HERE
+    public void drawScore(GraphicsContext g,int score){
+        g.setFont(new Font("Comic Sans", 30));
+        g.setFill(Color.MAGENTA);
+        g.strokeText("SCORE : " + score, 20, 40);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        background.setImage(theme.getBackground());
         startGame();
     }
 }

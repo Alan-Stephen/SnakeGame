@@ -1,4 +1,4 @@
-package com.example.snakeproject;
+package com.example.snakeproject.Controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,9 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -32,6 +30,7 @@ public class LeaderBoardController implements Initializable {
     TableColumn<LeaderBoardEntry, Integer> score;
 
     @FXML
+    public
     Button backButton;
 
     ObservableList<LeaderBoardEntry> list = FXCollections.observableArrayList();

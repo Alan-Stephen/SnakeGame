@@ -1,4 +1,4 @@
-package com.example.snakeproject;
+package com.example.snakeproject.Controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,13 +15,14 @@ import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
 
-// TODO: PRIVATE JAVAFX NODES AND SCENES VARIABLES FOR ALL CONTROLLERS
 public class DeathController implements Initializable {
 
     @FXML
+    public
     AnchorPane deathScene;
 
     @FXML
+    public
     Button submitButton;
 
     @FXML
@@ -48,8 +49,7 @@ public class DeathController implements Initializable {
 
     public String getName(){return nameField.getText();}
 
-    public boolean addToLeaderBoards(int score){
-        System.out.println("writing");
+    public void addToLeaderBoards(int score){
         try {
             PrintWriter writer = new PrintWriter(new FileOutputStream(
                     new File("src/main/resources/other/leaderBoards.csv"),
@@ -59,8 +59,7 @@ public class DeathController implements Initializable {
             writer.close();
         } catch (Exception e){
             e.printStackTrace();
-            return false;
         }
-        return true;
+        nameField.clear();
     }
 }

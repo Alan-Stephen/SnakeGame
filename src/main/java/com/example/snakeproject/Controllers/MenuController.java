@@ -1,4 +1,4 @@
-package com.example.snakeproject;
+package com.example.snakeproject.Controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,12 +13,15 @@ public class MenuController implements Initializable {
     AnchorPane menu;
 
     @FXML
+    public
     Button playButton;
 
     @FXML
+    public
     Button leaderboardButton;
 
     @FXML
+    public
     Button settingsButton;
 
     @Override

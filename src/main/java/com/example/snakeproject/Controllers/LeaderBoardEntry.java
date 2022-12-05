@@ -1,4 +1,4 @@
-package com.example.snakeproject;
+package com.example.snakeproject.Controllers;
 
 public class LeaderBoardEntry {
     private String name;
