@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -19,6 +20,7 @@ import java.util.ResourceBundle;
 
 public class GameController implements Initializable {
 
+    public Button closeButton;
     @FXML
     AnchorPane gameScene;
 
@@ -28,9 +30,13 @@ public class GameController implements Initializable {
     @FXML
     ImageView background;
 
+    GameLoop gameLoop;
+
+    AnimationTimer loop;
+
     private SnakeModel snakeModel = new SnakeModel(100,100);
     private Theme theme = new
-            Theme("gameBackground0","snake-head-right","snake-body");
+            Theme("gameBackground0","snake1");
 
 
 
@@ -48,15 +54,23 @@ public class GameController implements Initializable {
         background.setImage(theme.getBackground());
     }
 
-    private void startGame() {
-        AnimationTimer loop = new AnimationTimer() {
+    public void stopGame(){
+        loop.stop();
+    }
+
+    public void startGame() {
+         loop = new AnimationTimer() {
+
+            GraphicsContext gc = canvas.getGraphicsContext2D();
+            GameLoop gameLoop = new ImmortalGameLoop(theme,gc,snakeModel);
+
             int frame = 0;
             FoodModel foodModel = new FoodModel();
-            GraphicsContext gc = canvas.getGraphicsContext2D();
 
-            //rewrite to have less indentation
             @Override
             public void handle(long l) {
+                System.out.println("hello");
+                //gameLoop.handle(l);
                 frame++;
                 if(frame % 2 == 0){}
                 else{return;}
@@ -93,7 +107,7 @@ public class GameController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        closeButton.setFocusTraversable(false);
         background.setImage(theme.getBackground());
-        startGame();
     }
 }

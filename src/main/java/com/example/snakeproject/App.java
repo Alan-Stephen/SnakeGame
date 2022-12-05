@@ -23,15 +23,26 @@ public class App extends Application {
         DeathController deathController = deathLoader.getController();
         SettingsController settingsController = settingsLoader.getController();
 
-        gameController.setTheme(new Theme(settingsController.getBGPath(),
-                "snake-head-right","snake-body"));
-
         gameController.getSnakeModel().activeProperty()
                 .addListener( ((observableValue, oldVal, newVal) -> {
                     if (newVal){}
-                    else{stage.setScene(deathController.deathScene.getScene());}
+                    else{
+                        stage.setScene(deathController.deathScene.getScene());
+                        gameController.stopGame();
+                    }
         }));
 
+        gameController.closeButton.setOnAction(actionEvent -> {
+            stage.setScene(menuScene);
+            gameController.stopGame();
+        });
+
+        gameController.setTheme(new Theme(settingsController.getBGPath(),
+                settingsController.getSnakeSelected()));
+
+        if(gameScene == null){
+            System.out.println("wh");
+        }
         gameScene.addEventHandler(KeyEvent.KEY_PRESSED,
                 new GameKeyListener(
                         gameController.getSnakeModel(),
@@ -43,7 +54,7 @@ public class App extends Application {
                     .updateList();
             stage.setScene(leaderBoardsScene);
         });
-
+        gameController.startGame();
     }
 
     @Override
@@ -99,7 +110,6 @@ public class App extends Application {
                     throw new RuntimeException(e);
                 }
             }else {
-                //startGame();
                 GameController gameController = gameLoader.getController();
                 gameController.resetGame();
                 startGame();
