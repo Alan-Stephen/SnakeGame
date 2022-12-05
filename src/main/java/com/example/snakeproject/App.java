@@ -1,5 +1,5 @@
 package com.example.snakeproject;
-
+import com.example.snakeproject.Controllers.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -7,18 +7,24 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Set;
 
 // TODO : make use of boolean statements
 public class App extends Application {
 
     Stage stage;
 
-    FXMLLoader gameLoader,leaderBoardsLoader,deathLoader,menuLoader;
-    Scene gameScene, leaderBoardsScene, deathScene, menuScene;
+    FXMLLoader gameLoader,leaderBoardsLoader,deathLoader,menuLoader,
+        settingsLoader;
+    Scene gameScene, leaderBoardsScene, deathScene, menuScene,settingsScene;
 
-    private boolean startGame(){
+    private void startGame(){
         GameController gameController = gameLoader.getController();
         DeathController deathController = deathLoader.getController();
+        SettingsController settingsController = settingsLoader.getController();
+
+        gameController.setTheme(new Theme(settingsController.getBGPath(),
+                "snake-head-right","snake-body"));
 
         gameController.getSnakeModel().activeProperty()
                 .addListener( ((observableValue, oldVal, newVal) -> {
@@ -38,7 +44,6 @@ public class App extends Application {
             stage.setScene(leaderBoardsScene);
         });
 
-        return  true;
     }
 
     @Override
@@ -50,20 +55,30 @@ public class App extends Application {
         menuLoader = new FXMLLoader(getClass().getResource("/fxml/mainMenu.fxml"));
         deathLoader = new FXMLLoader(getClass().getResource("/fxml/deathScene.fxml"));
         leaderBoardsLoader = new FXMLLoader(getClass().getResource("/fxml/leaderBoardsScene.fxml"));
+        settingsLoader = new FXMLLoader(getClass().getResource("/fxml/settingsScene.fxml"));
 
         // Load Scenes so Controllers can be accessed
         try{
             menuScene = new Scene(menuLoader.load());
             deathScene = new Scene(deathLoader.load());
             leaderBoardsScene = new Scene(leaderBoardsLoader.load());
+            settingsScene = new Scene(settingsLoader.load());
         }catch (Exception e){
             e.printStackTrace();
         }
 
+        SettingsController settingsController = settingsLoader.getController();
         MenuController menuController = menuLoader.getController();
         LeaderBoardController leaderBoardController = leaderBoardsLoader.getController();
 
+        settingsController.backButton.setOnAction(actionEvent -> {
+            stage.setScene(menuScene);
+        });
         menuController.playButton.setOnAction( actionEvent -> {startGame();});
+
+        menuController.settingsButton.setOnAction(
+                actionEvent -> {stage.setScene(settingsScene);}
+        );
 
         menuController.leaderboardButton.setOnAction( actionEvent -> {
             leaderBoardController.updateList();
