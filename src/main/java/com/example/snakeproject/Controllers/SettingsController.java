@@ -24,6 +24,7 @@ public class SettingsController implements Initializable  {
     
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        snake1.setSelected(true);
         background1.setSelected(true);
     }
 
@@ -53,4 +54,6 @@ public class SettingsController implements Initializable  {
     public String getBGPath(){
         return backgroundSelected;
     }
+
+    public String getSnakeSelected(){return snakeSelected;}
 }

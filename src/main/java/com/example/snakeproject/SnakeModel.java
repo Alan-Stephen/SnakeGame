@@ -24,7 +24,7 @@ public class SnakeModel extends ModelEntity {
      * */
     public SnakeModel(int x, int y) {
         setActive(true);
-        Image i = ImageUtil.getInstance().getImage("snake-head-right");
+        Image i = ImageUtil.getInstance().getImage("snake_head_right");
         this.setX(x);
         this.setY(y);
         this.setW((int) i.getWidth());
@@ -137,12 +137,11 @@ public class SnakeModel extends ModelEntity {
     /**
      * checks if snake position is out of bounds if so sets l.false.
      */
-    private void outofBounds()
+    public void outofBounds()
     {
         boolean xOut = (getX() <= 0 || getX() >= (870));
         boolean yOut = (getY() <= 0 || getY() >= (560));
-        if (xOut || yOut)
-        {
+        if (xOut || yOut) {
             setActive(false);
         }
     }

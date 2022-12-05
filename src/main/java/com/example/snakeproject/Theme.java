@@ -14,10 +14,26 @@ public class Theme {
     FoodView food;
 
     ImageUtil util = ImageUtil.getInstance();
-    public Theme(String bgPath, String snakePath, String bodyPath){
+    public Theme(String bgPath, String snakeType){
         food = new FoodView();
+        String snakePath = null;
+        String bodyPath = null;
         background = util.getImage(bgPath);
-        snake = new SnakeView(snakePath,bodyPath);
+        switch (snakeType){
+            case "snake1" -> {
+                snakePath = "snake_head_right";
+                bodyPath = "snake_body";
+            }
+            case "snake2" -> {
+                snakePath = "snake_head_right_2";
+                bodyPath = "snake_body_2";
+            }
+            case "snake3" -> {
+                snakePath = "snake_head_right_3";
+                bodyPath = "snake_body_3";
+            }
+        }
+        this.snake = new SnakeView(snakePath,bodyPath);
     }
     public void drawSnake(GraphicsContext gc, int x, int y,
                           LinkedList<Point2D> bodyPoints){

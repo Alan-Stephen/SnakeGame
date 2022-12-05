@@ -20,11 +20,12 @@ public class SnakeView extends ViewEntity {
     private GameUtil gUtil = GameUtil.getInstance();
 
     public SnakeView(String headPath, String bodyPath){
+        System.out.println(headPath);
+        System.out.println(bodyPath);
         snakeHead = util.getImage(headPath);
         newImgSnakeHead = snakeHead;
-        this.setI(util.getImage("snake-body"));
+        this.setI(util.getImage(bodyPath));
         bodyPointSpacing  = (int) (getI().getWidth() / SPEED_XY);
-
     }
 
     public void resetHead(){
