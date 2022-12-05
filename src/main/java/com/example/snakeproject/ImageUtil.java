@@ -9,7 +9,6 @@ import java.util.Map;
  * effeciently available.
  * */
 
-// TODO: Make into Singleton
 public class ImageUtil
 {
 	private static ImageUtil instance;
@@ -50,7 +49,11 @@ public class ImageUtil
 		images.put("14", util.getImage("food-pineapple.png"));
 		images.put("15", util.getImage("food-strawberry.png"));
 		images.put("16", util.getImage("food-watermelon.png"));
-		images.put("UI-background", util.getImage("UI-background.png"));
+		images.put("gameBackground0", util.getImage("gameBackground0.png"));
 		images.put("game-scene-01", util.getImage("game-scene-01.jpg"));
+		images.put("gameBackground1", util.getImage("gameBackground1.png"));
+		images.put("gameBackground2", util.getImage("gameBackground2.jpg"));
+		images.put("gameBackground3", util.getImage("gameBackground3.jpg"));
+
 	}
 }
