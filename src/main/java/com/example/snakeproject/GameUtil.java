@@ -1,24 +1,14 @@
 package com.example.snakeproject;
 
 import javafx.scene.SnapshotParameters;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
-import javax.imageio.ImageIO;
 
 /**
  * Helper class with methods to handle images.
  * */
 
-// TODO : MAKE INTO SINGLETON
 public class GameUtil {
 
 	private static GameUtil instance;

@@ -1,13 +1,10 @@
 package com.example.snakeproject;
 
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.shape.Rectangle;
 
 import java.util.LinkedList;
-import java.util.List;
 
 // MORE MVC HERE , remove snake head
 /**
@@ -18,7 +15,7 @@ public class SnakeModel extends ModelEntity {
     private int length;
     public int score = 0;
     public LinkedList<Point2D> bodyPoints = new LinkedList<>();
-    Direction direction = Direction.right;
+    public Direction direction = Direction.right;
 
     /** Spawns snake at specified parameters.
      * @param x x coord of spawned snake
@@ -150,7 +147,7 @@ public class SnakeModel extends ModelEntity {
         }
     }
 
-    static enum Direction {
+    public static enum Direction {
         up,
         down,
         left,

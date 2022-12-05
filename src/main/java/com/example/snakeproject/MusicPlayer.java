@@ -11,10 +11,10 @@ import javazoom.jl.player.Player;
  * Plays music in seperate thread
  *
  * */
-public class MusicPlayer extends Thread
-{
+public class MusicPlayer extends Thread {
 	private String filename;
-	public Player player;
+	private Player player;
+
 
 	/**
 	 * @param filename file to play music from

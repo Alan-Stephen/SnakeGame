@@ -44,8 +44,4 @@ public class FoodModel extends ModelEntity
 			mySnake.score += 521;
 		}
 	}
-
-	/**
-	 * draws food icon
-	 * */
 }
