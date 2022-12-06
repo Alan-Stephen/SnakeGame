@@ -34,8 +34,7 @@ public class GameController implements Initializable {
     private SnakeModel snakeModel = new SnakeModel(100,100);
     private Theme theme = new
             Theme("gameBackground0","snake1");
-
-
+    private Gamemode gamemode;
     public SnakeModel getSnakeModel() {return snakeModel;}
     public SnakeView getSnakeView() {return theme.getSnakeView();}
 

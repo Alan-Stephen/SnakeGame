@@ -67,6 +67,8 @@ public class App extends Application {
                     .updateList();
             stage.setScene(leaderBoardsScene);
         });
+
+        gameController.setGamemode(settingsController.getGamemodeSelected());
         gameController.startGame();
     }
 
