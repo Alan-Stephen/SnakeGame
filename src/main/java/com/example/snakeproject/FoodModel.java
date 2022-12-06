@@ -38,10 +38,9 @@ public class FoodModel extends ModelEntity
 
 		if (mySnake.getRectangle().intersects(this.getRectangle().getBoundsInParent())
 				&& getActive() && mySnake.getActive()) {
-			System.out.println("yay");
 			setActive(false);
 			mySnake.changeLength(mySnake.getLength() + 1);
-			mySnake.score += 521;
+			mySnake.setScore(mySnake.getScore() + 521);
 		}
 	}
 }

@@ -21,7 +21,7 @@ import javafx.scene.media.Media;
 public class MusicPlayer extends Thread {
 	private Media file;
 
-	MediaPlayer player;
+	private MediaPlayer player;
 
 	/**
 	 * @param filename file to play music from

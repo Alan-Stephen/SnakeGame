@@ -1,5 +1,6 @@
 package com.example.snakeproject;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
@@ -13,9 +14,38 @@ import java.util.LinkedList;
 
 public class SnakeModel extends ModelEntity {
     private int length;
-    public int score = 0;
-    public LinkedList<Point2D> bodyPoints = new LinkedList<>();
-    public Direction direction = Direction.right;
+    private SimpleIntegerProperty score = new SimpleIntegerProperty(0);
+    private LinkedList<Point2D> bodyPoints = new LinkedList<>();
+    private DIRECTION direction = DIRECTION.right;
+
+    public LinkedList<Point2D> getBodyPoints() {
+        return bodyPoints;
+    }
+
+    public DIRECTION getDirection() {
+        return direction;
+    }
+
+    public int getScore() {
+        return score.get();
+    }
+
+    public SimpleIntegerProperty scoreProperty() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score.set(score);
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public int getLength() {return length;}
+
+    // set length
+    public void changeLength(int length) {this.length = length;}
 
     /** Spawns snake at specified parameters.
      * @param x x coord of spawned snake
@@ -32,16 +62,6 @@ public class SnakeModel extends ModelEntity {
 
         this.length = 1;
     }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
-
-    public int getLength() {return length;}
-
-    // set length
-    public void changeLength(int length) {this.length = length;}
-
 
     public void updateBodyPoints(int bodyPointSpacing){
         bodyPoints.add(new Point2D(getX(), getY()));
@@ -71,30 +91,26 @@ public class SnakeModel extends ModelEntity {
         switch (e.getCode())
         {
             case UP:
-                if (direction == Direction.down) {}
-                else { direction = Direction.up;
-                    // newImgSnakeHead = GameUtil.rotateImage(IMG_SNAKE_HEAD, -90);
+                if (direction == DIRECTION.down) {}
+                else { direction = DIRECTION.up;
                 }
                 break;
 
             case DOWN:
-                if (direction == Direction.up) {}
-                else { direction = Direction.down;
-                    // newImgSnakeHead = GameUtil.rotateImage(IMG_SNAKE_HEAD, 90);
+                if (direction == DIRECTION.up) {}
+                else { direction = DIRECTION.down;
                 }
                 break;
 
             case LEFT:
-                if (direction == Direction.right) {}
-                else { direction = Direction.left;
-                    // newImgSnakeHead = GameUtil.rotateImage(IMG_SNAKE_HEAD, -180);
+                if (direction == DIRECTION.right) {}
+                else { direction = DIRECTION.left;
                 }
                 break;
 
             case RIGHT:
-                if (direction == Direction.left) {}
-                else { direction = Direction.right;
-                    // newImgSnakeHead = IMG_SNAKE_HEAD;
+                if (direction == DIRECTION.left) {}
+                else { direction = DIRECTION.right;
                 }
 
             default:
@@ -146,7 +162,7 @@ public class SnakeModel extends ModelEntity {
         }
     }
 
-    public static enum Direction {
+    public enum DIRECTION {
         up,
         down,
         left,

@@ -16,7 +16,7 @@ public class GameKeyListener implements EventHandler<KeyEvent> {
     }
     @Override
     public void handle(KeyEvent keyEvent) {
-        snakeView.keyPressed(keyEvent,mySnake.direction);
+        snakeView.keyPressed(keyEvent,mySnake.getDirection());
         mySnake.keyPressed(keyEvent);
     }
 }

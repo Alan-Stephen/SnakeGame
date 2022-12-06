@@ -34,7 +34,7 @@ public class DefaultGamemode implements Gamemode{
         gc.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
         theme.drawSnake(gc, snakeModel.getX(),
-                snakeModel.getY(),snakeModel.bodyPoints);
+                snakeModel.getY(), snakeModel.getBodyPoints());
 
         if(foodModel.getActive()){
             theme.drawFood(gc,foodModel.getX(), foodModel.getY());
@@ -45,7 +45,7 @@ public class DefaultGamemode implements Gamemode{
         }
         drawScore(gc, snakeModel.getScore());
         snakeModel.move();
-        snakeModel.updateBodyPoints(theme.getSnakeView().bodyPointSpacing);
+        snakeModel.updateBodyPoints(theme.getSnakeView().getBodyPointSpacing());
         snakeModel.checkIfAlive();
     }
 

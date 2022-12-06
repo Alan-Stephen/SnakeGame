@@ -26,10 +26,11 @@ public class ImageUtil
 	}
 
 	GameUtil util = GameUtil.getInstance();
-	private   Map<String, Image> images = new HashMap<>();
+	private final Map<String, Image> images = new HashMap<>();
 	{
 		// snake
-		images.put("snake_head_right", util.getImage("snake-head-right.png"));
+		images.put("snake_head_right", util.
+				getImage("snake-head-right.png"));
 		images.put("snake_body", util.getImage("snake-body.png"));
 		// obstacles
 		images.put("0", util.getImage("food-kiwi.png"));
@@ -49,14 +50,22 @@ public class ImageUtil
 		images.put("14", util.getImage("food-pineapple.png"));
 		images.put("15", util.getImage("food-strawberry.png"));
 		images.put("16", util.getImage("food-watermelon.png"));
-		images.put("gameBackground0", util.getImage("gameBackground0.png"));
-		images.put("game-scene-01", util.getImage("game-scene-01.jpg"));
-		images.put("gameBackground1", util.getImage("gameBackground1.png"));
-		images.put("gameBackground2", util.getImage("gameBackground2.jpg"));
-		images.put("gameBackground3", util.getImage("gameBackground3.jpg"));
-		images.put("snake_head_right_2", util.getImage("snake-head-right_2.png"));
-		images.put("snake_head_right_3", util.getImage("snake-head-right_3.png"));
+		images.put("gameBackground0", util.
+				getImage("gameBackground0.png"));
+		images.put("game-scene-01", util.
+				getImage("game-scene-01.jpg"));
+		images.put("gameBackground1", util.
+				getImage("gameBackground1.png"));
+		images.put("gameBackground2", util.
+				getImage("gameBackground2.jpg"));
+		images.put("gameBackground3", util.
+				getImage("gameBackground3.jpg"));
+		images.put("snake_head_right_2", util.
+				getImage("snake-head-right_2.png"));
+		images.put("snake_head_right_3", util.
+				getImage("snake-head-right_3.png"));
 		images.put("snake_body_2", util.getImage("snake-body_2.png"));
 		images.put("snake_body_3", util.getImage("snake-body_3.png"));
+		images.put("bomb", util.getImage("bomb.png"));
 	}
 }
