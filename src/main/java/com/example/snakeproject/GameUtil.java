@@ -33,7 +33,7 @@ public class GameUtil {
 			i = new Image(imagePath);
 		} catch (Exception e)
 		{
-			System.err.println("VILLA : FINN EKKI TILTEKNA MYNDIN !\n");
+			System.err.printf("ERROR : IMAGE %s NOT FOUND \n",imagePath);
 			e.printStackTrace();
 		}
 
