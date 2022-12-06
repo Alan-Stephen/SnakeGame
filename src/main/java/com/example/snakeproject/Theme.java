@@ -20,10 +20,6 @@ public class Theme {
         String bodyPath = null;
         background = util.getImage(bgPath);
         switch (snakeType){
-            case "snake1" -> {
-                snakePath = "snake_head_right";
-                bodyPath = "snake_body";
-            }
             case "snake2" -> {
                 snakePath = "snake_head_right_2";
                 bodyPath = "snake_body_2";
@@ -31,6 +27,10 @@ public class Theme {
             case "snake3" -> {
                 snakePath = "snake_head_right_3";
                 bodyPath = "snake_body_3";
+            }
+            default -> {
+                snakePath = "snake_head_right";
+                bodyPath = "snake_body";
             }
         }
         this.snake = new SnakeView(snakePath,bodyPath);
