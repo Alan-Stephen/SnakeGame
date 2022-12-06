@@ -3,7 +3,7 @@ module com.example.snakeproject {
     requires javafx.fxml;
     requires java.desktop;
     requires jlayer;
-
+    requires javafx.media;
 
     opens com.example.snakeproject to javafx.fxml;
     exports com.example.snakeproject;

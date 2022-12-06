@@ -1,27 +1,35 @@
 package com.example.snakeproject;
 
+
 import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.util.Random;
 import java.awt.Graphics2D;
 
+
+import javafx.application.Platform;
+import javafx.scene.media.MediaPlayer;
 import javazoom.jl.player.Player;
+
+import javafx.scene.media.Media;
 
 /**
  * Plays music in seperate thread
  *
  * */
 public class MusicPlayer extends Thread {
-	private String filename;
-	private Player player;
+	private Media file;
 
+	MediaPlayer player;
 
 	/**
 	 * @param filename file to play music from
 	 * */
-	public MusicPlayer(String filename)
-	{
-		this.filename = filename;
+	public MusicPlayer(String filename) {
+		file = new Media(new File(filename).toURI().toString());
+		player = new MediaPlayer(file);
+		player.setCycleCount(1);
 	}
 
 	/**
@@ -29,27 +37,22 @@ public class MusicPlayer extends Thread {
 	 * */
 	public void play()
 	{
-		new Thread()
-		{
-			@Override
-			public void run()
-			{
-				super.run();
-				try
-				{
-					//BufferedInputStream buffer = new BufferedInputStream(new FileInputStream(filename));
-					player = new Player(new BufferedInputStream(new FileInputStream(filename)));
-					player.play();
+		Platform.runLater(() -> {
+			try {
+				player.play();
 
-				} catch (Exception e)
-				{
-					System.out.println(e);
-				}
+			} catch (Exception e) {
+				System.out.println(e);
 			}
-		}.start();
+		});
 	}
 
-
+	public void stopMusic(){
+		player.stop();
+	}
+	public void loopMusic(){
+		player.setCycleCount(99);
+	}
 
 	/**
 	 * Plays music without creation of instance
