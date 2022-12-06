@@ -62,7 +62,7 @@ public class App extends Application {
                         gameController.getSnakeView()));
 
         deathController.submitButton.setOnAction(actionEvent -> {
-            deathController.addToLeaderBoards(gameController.getSnakeModel().score);
+            deathController.addToLeaderBoards(gameController.getSnakeModel().getScore());
             ((LeaderBoardController) leaderBoardsLoader.getController())
                     .updateList();
             stage.setScene(leaderBoardsScene);
