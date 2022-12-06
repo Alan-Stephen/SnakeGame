@@ -1,13 +1,14 @@
 package com.example.snakeproject;
+
 import com.example.snakeproject.Controllers.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
-import java.util.Set;
 
 // TODO : make use of boolean statements
 public class App extends Application {
@@ -15,34 +16,46 @@ public class App extends Application {
     Stage stage;
 
     FXMLLoader gameLoader,leaderBoardsLoader,deathLoader,menuLoader,
-        settingsLoader;
+            settingsLoader;
     Scene gameScene, leaderBoardsScene, deathScene, menuScene,settingsScene;
+
+    String GAME_MUSIC_PATH = "src/main/resources/audio/gamemusic.mp3";
+    String EAT_MUSIC_PATH = "src/main/resources/audio/eatSound.wav";
+    String BOMB_MUSIC_PATH = "src/main/resources/audio/bombSound.wav";
 
     private void startGame(){
         GameController gameController = gameLoader.getController();
         DeathController deathController = deathLoader.getController();
         SettingsController settingsController = settingsLoader.getController();
+        MusicPlayer gameMusic = new MusicPlayer(GAME_MUSIC_PATH);
+        gameMusic.play();
+        gameMusic.loopMusic();
+
+        gameController.getSnakeModel().scoreProperty().
+                addListener((v, oldVal, newVal) -> {
+                    MusicPlayer.getMusicPlay(EAT_MUSIC_PATH);
+                });
 
         gameController.getSnakeModel().activeProperty()
                 .addListener( ((observableValue, oldVal, newVal) -> {
                     if (newVal){}
                     else{
+                        gameMusic.stopMusic();
+                        MusicPlayer.getMusicPlay(BOMB_MUSIC_PATH);
                         stage.setScene(deathController.deathScene.getScene());
                         gameController.stopGame();
                     }
-        }));
+                }));
 
         gameController.closeButton.setOnAction(actionEvent -> {
             stage.setScene(menuScene);
+            gameMusic.stopMusic();
             gameController.stopGame();
         });
 
         gameController.setTheme(new Theme(settingsController.getBGPath(),
                 settingsController.getSnakeSelected()));
 
-        if(gameScene == null){
-            System.out.println("wh");
-        }
         gameScene.addEventHandler(KeyEvent.KEY_PRESSED,
                 new GameKeyListener(
                         gameController.getSnakeModel(),
@@ -61,15 +74,19 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
         this.stage = stage;
         stage.setResizable(false);
-
         gameLoader = new FXMLLoader(getClass().getResource("/fxml/gameScene.fxml"));
         menuLoader = new FXMLLoader(getClass().getResource("/fxml/mainMenu.fxml"));
         deathLoader = new FXMLLoader(getClass().getResource("/fxml/deathScene.fxml"));
         leaderBoardsLoader = new FXMLLoader(getClass().getResource("/fxml/leaderBoardsScene.fxml"));
         settingsLoader = new FXMLLoader(getClass().getResource("/fxml/settingsScene.fxml"));
 
+        stage.setOnCloseRequest(windowEvent -> {
+            System.exit(0);
+        });
+
         // Load Scenes so Controllers can be accessed
         try{
+            gameScene = new Scene(gameLoader.load());
             menuScene = new Scene(menuLoader.load());
             deathScene = new Scene(deathLoader.load());
             leaderBoardsScene = new Scene(leaderBoardsLoader.load());
@@ -102,19 +119,12 @@ public class App extends Application {
 
         menuController.playButton.setOnAction(actionEvent -> {
             if(gameScene == null) {
-                try {
-                    gameScene = new Scene(gameLoader.load());
-                    startGame();
-                    stage.setScene(gameScene);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
             }else {
                 GameController gameController = gameLoader.getController();
                 gameController.resetGame();
-                startGame();
-                stage.setScene(gameScene);
             }
+            startGame();
+            stage.setScene(gameScene);
         });
 
         stage.setScene(menuScene);
