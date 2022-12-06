@@ -33,19 +33,23 @@ public class SettingsController implements Initializable  {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         snake1.setSelected(true);
         background1.setSelected(true);
+        gamemode4.setSelected(true);
     }
 
     @FXML
     public void getGamemode(ActionEvent e) {
         if(gamemode1.isSelected()){
-            snakeSelected = "gamemode1";
+            gamemodeSelected = "gamemode1";
         } else if (gamemode2.isSelected()) {
-            snakeSelected = "gamemode2";
+            gamemodeSelected = "gamemode2";
         } else if (gamemode3.isSelected()) {
-            snakeSelected = "gamemode3";
+            gamemodeSelected = "gamemode3";
         } else if (gamemode4.isSelected()) {
-            gamemodeSelected = "gamemode4";
+            gamemodeSelected = "gamemode0";
+        } else {
+            System.out.println("none other");
         }
+        System.out.println(gamemodeSelected);
     }
 
     @FXML
@@ -57,6 +61,7 @@ public class SettingsController implements Initializable  {
         } else if (snake3.isSelected()) {
             snakeSelected = "snake3";
         }
+        System.out.println(snakeSelected);
     }
     @FXML
     public void getBackground(ActionEvent actionEvent) {
