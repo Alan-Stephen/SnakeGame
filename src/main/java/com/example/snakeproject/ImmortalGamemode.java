@@ -6,7 +6,7 @@ import javafx.scene.text.Font;
 
 import java.awt.*;
 
-public class ImmortalGameLoop implements GameLoop{
+public class ImmortalGamemode implements Gamemode{
 
 
     final int CANVAS_WIDTH = 870;
@@ -20,7 +20,7 @@ public class ImmortalGameLoop implements GameLoop{
     SnakeModel snakeModel;
 
     FoodModel foodModel = new FoodModel();
-    public ImmortalGameLoop(Theme theme, GraphicsContext gc, SnakeModel snakeModel) {
+    public ImmortalGamemode(Theme theme, GraphicsContext gc, SnakeModel snakeModel) {
         this.theme = theme;
         this.gc = gc;
         this.snakeModel = snakeModel;
@@ -32,8 +32,8 @@ public class ImmortalGameLoop implements GameLoop{
         if(frame % 2 == 0){}
         else{return;}
 
-        //if(snakeModel.getActive()){}
-        //else{return;}
+        if(snakeModel.getActive()){}
+        else{return;}
 
         gc.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
