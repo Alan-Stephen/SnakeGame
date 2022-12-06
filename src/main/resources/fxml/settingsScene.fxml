@@ -201,20 +201,10 @@
                            <children>
                               <ImageView fitHeight="70.0" fitWidth="98.0" pickOnBounds="true">
                                  <image>
-                                    <Image url="@../fastmode.png" />
-                                 </image>
-                              </ImageView>
-                              <RadioButton fx:id="gamemode3" mnemonicParsing="false" onAction="#getGamemode" toggleGroup="$gamemode" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <ImageView fitHeight="70.0" fitWidth="98.0" pickOnBounds="true">
-                                 <image>
                                     <Image url="@../bombfruit.jpg" />
                                  </image>
                               </ImageView>
-                              <RadioButton fx:id="gamemode4" mnemonicParsing="false" onAction="#getGamemode" toggleGroup="$gamemode" />
+                              <RadioButton fx:id="gamemode3" mnemonicParsing="false" onAction="#getGamemode" toggleGroup="$gamemode" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -224,7 +214,7 @@
                                     <Image url="@../defaultGamemode.png.png" />
                                  </image>
                               </ImageView>
-                              <RadioButton fx:id="gamemode5" mnemonicParsing="false" onAction="#getGamemode" toggleGroup="$gamemode" />
+                              <RadioButton fx:id="gamemode4" mnemonicParsing="false" onAction="#getGamemode" toggleGroup="$gamemode" />
                            </children>
                         </VBox>
                      </children>
