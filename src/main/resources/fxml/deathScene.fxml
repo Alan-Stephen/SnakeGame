@@ -8,15 +8,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id = "deathScene" prefHeight="560.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.snakeproject.Controllers.DeathController">
+<AnchorPane fx:id="deathScene" prefHeight="560.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.snakeproject.Controllers.DeathController">
    <children>
       <ImageView fitHeight="560.0" fitWidth="870.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../UI-background2.png" />
          </image>
       </ImageView>
-      <Label layoutX="251.0" layoutY="241.0" text="GAME OVER">
+      <Label layoutX="245.0" layoutY="43.0" text="GAME OVER">
          <font>
             <Font name="DejaVu Serif Bold" size="58.0" />
          </font>
@@ -27,5 +26,15 @@
          </font>
       </TextField>
       <Button fx:id="submitButton" layoutX="475.0" layoutY="357.0" mnemonicParsing="false" text="Enter Name" />
+      <Label layoutX="312.0" layoutY="152.0" text="Your Score:">
+         <font>
+            <Font name="DejaVu Serif Bold" size="50.0" />
+         </font>
+      </Label>
+      <Label fx:id="scoreLabel" contentDisplay="CENTER" layoutX="418.0" layoutY="235.0" text="0">
+         <font>
+            <Font name="DejaVu Serif Bold" size="50.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

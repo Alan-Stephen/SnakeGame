@@ -82,7 +82,7 @@
                                     <Image url="@../gameBackground0.png" />
                                  </image>
                               </ImageView>
-                              <RadioButton fx:id="background1" mnemonicParsing="false" onAction="#getBackground">
+                              <RadioButton fx:id="background1" mnemonicParsing="false" onAction="#setBackground">
                                  <toggleGroup>
                                     <ToggleGroup fx:id="background" />
                                  </toggleGroup>
@@ -98,7 +98,7 @@
                                           <Image url="@../gameBackground1.png" />
                                        </image>
                                     </ImageView>
-                                    <RadioButton fx:id="background2" mnemonicParsing="false" onAction="#getBackground" toggleGroup="$background" />
+                                    <RadioButton fx:id="background2" mnemonicParsing="false" onAction="#setBackground" toggleGroup="$background" />
                                  </children>
                               </VBox>
                            </children>
@@ -110,7 +110,7 @@
                                     <Image url="@../gameBackground2.jpg" />
                                  </image>
                               </ImageView>
-                              <RadioButton fx:id="background3" mnemonicParsing="false" onAction="#getBackground" toggleGroup="$background" />
+                              <RadioButton fx:id="background3" mnemonicParsing="false" onAction="#setBackground" toggleGroup="$background" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -120,7 +120,7 @@
                                     <Image url="@../gameBackground3.jpg" />
                                  </image>
                               </ImageView>
-                              <RadioButton fx:id="background4" mnemonicParsing="false" onAction="#getBackground" toggleGroup="$background" />
+                              <RadioButton fx:id="background4" mnemonicParsing="false" onAction="#setBackground" toggleGroup="$background" />
                            </children>
                         </VBox>
                      </children>
@@ -134,7 +134,7 @@
                                     <Image url="@../snake-head-right.png" />
                                  </image>
                               </ImageView>
-                              <RadioButton fx:id="snake1" mnemonicParsing="false" onAction="#getSnake">
+                              <RadioButton fx:id="snake1" mnemonicParsing="false" onAction="#setSnake">
                                  <toggleGroup>
                                     <ToggleGroup fx:id="snake" />
                                  </toggleGroup>
@@ -150,7 +150,7 @@
                                           <Image url="@../snake-head-right_2.png" />
                                        </image>
                                     </ImageView>
-                                    <RadioButton fx:id="snake2" mnemonicParsing="false" onAction="#getSnake" toggleGroup="$snake" />
+                                    <RadioButton fx:id="snake2" mnemonicParsing="false" onAction="#setSnake" toggleGroup="$snake" />
                                  </children>
                               </VBox>
                            </children>
@@ -162,7 +162,7 @@
                                     <Image url="@../snake-head-right_3.png" />
                                  </image>
                               </ImageView>
-                              <RadioButton fx:id="snake3" mnemonicParsing="false" onAction="#getSnake" toggleGroup="$snake" />
+                              <RadioButton fx:id="snake3" mnemonicParsing="false" onAction="#setSnake" toggleGroup="$snake" />
                            </children>
                         </VBox>
                      </children>
@@ -176,7 +176,7 @@
                                     <Image url="@../immortalmode.png" />
                                  </image>
                               </ImageView>
-                              <RadioButton fx:id="gamemode1" mnemonicParsing="false" onAction="#getGamemode">
+                              <RadioButton fx:id="gamemode1" mnemonicParsing="false" onAction="#setGamemode">
                                  <toggleGroup>
                                     <ToggleGroup fx:id="gamemode" />
                                  </toggleGroup>
@@ -192,7 +192,7 @@
                                           <Image url="@../morefruit.jpg" />
                                        </image>
                                     </ImageView>
-                                    <RadioButton fx:id="gamemode2" mnemonicParsing="false" onAction="#getGamemode" toggleGroup="$gamemode" />
+                                    <RadioButton fx:id="gamemode2" mnemonicParsing="false" onAction="#setGamemode" toggleGroup="$gamemode" />
                                  </children>
                               </VBox>
                            </children>
@@ -204,7 +204,7 @@
                                     <Image url="@../bombfruit.jpg" />
                                  </image>
                               </ImageView>
-                              <RadioButton fx:id="gamemode3" mnemonicParsing="false" onAction="#getGamemode" toggleGroup="$gamemode" />
+                              <RadioButton fx:id="gamemode3" mnemonicParsing="false" onAction="#setGamemode" toggleGroup="$gamemode" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -214,7 +214,7 @@
                                     <Image url="@../defaultGamemode.png.png" />
                                  </image>
                               </ImageView>
-                              <RadioButton fx:id="gamemode4" mnemonicParsing="false" onAction="#getGamemode" toggleGroup="$gamemode" />
+                              <RadioButton fx:id="gamemode4" mnemonicParsing="false" onAction="#setGamemode" toggleGroup="$gamemode" />
                            </children>
                         </VBox>
                      </children>
@@ -228,7 +228,7 @@
                                     <Image url="@../easyDifficulty.jpg" />
                                  </image>
                               </ImageView>
-                              <RadioButton fx:id="difficulty1" mnemonicParsing="false">
+                              <RadioButton fx:id="difficulty1" mnemonicParsing="false" onAction="#setDifficultySelected">
                                  <toggleGroup>
                                     <ToggleGroup fx:id="difficulty" />
                                  </toggleGroup>
@@ -244,7 +244,7 @@
                                           <Image url="@../mediumDifficulty.jpg" />
                                        </image>
                                     </ImageView>
-                                    <RadioButton fx:id="difficulty2" mnemonicParsing="false" toggleGroup="$difficulty" />
+                                    <RadioButton fx:id="difficulty2" mnemonicParsing="false" onAction="#setDifficultySelected" toggleGroup="$difficulty" />
                                  </children>
                               </VBox>
                            </children>
@@ -256,7 +256,7 @@
                                     <Image url="@../harddifficulty.png" />
                                  </image>
                               </ImageView>
-                              <RadioButton fx:id="difficulty3" mnemonicParsing="false" toggleGroup="$difficulty" />
+                              <RadioButton fx:id="difficulty3" mnemonicParsing="false" onAction="#setDifficultySelected" toggleGroup="$difficulty" />
                            </children>
                         </VBox>
                      </children>
