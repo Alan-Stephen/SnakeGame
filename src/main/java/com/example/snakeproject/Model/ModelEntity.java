@@ -1,4 +1,4 @@
-package com.example.snakeproject;
+package com.example.snakeproject.Model;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;

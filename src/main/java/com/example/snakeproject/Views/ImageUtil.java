@@ -1,4 +1,4 @@
-package com.example.snakeproject;
+package com.example.snakeproject.Views;
 
 import javafx.scene.image.Image;
 import java.util.HashMap;
@@ -67,5 +67,6 @@ public class ImageUtil
 		images.put("snake_body_2", util.getImage("snake-body_2.png"));
 		images.put("snake_body_3", util.getImage("snake-body_3.png"));
 		images.put("bomb", util.getImage("bomb.png"));
+		images.put("brick", util.getImage("brick.png"));
 	}
 }

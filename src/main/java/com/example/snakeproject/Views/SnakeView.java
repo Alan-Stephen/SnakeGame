@@ -1,5 +1,6 @@
-package com.example.snakeproject;
+package com.example.snakeproject.Views;
 
+import com.example.snakeproject.Model.SnakeModel;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -37,7 +38,6 @@ public class SnakeView extends ViewEntity {
     }
 
     public void keyPressed(KeyEvent e, SnakeModel.DIRECTION direction){
-        System.out.println("changed direction");
         switch (e.getCode())
         {
             case UP:

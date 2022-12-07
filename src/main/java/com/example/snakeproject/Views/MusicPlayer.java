@@ -1,16 +1,11 @@
-package com.example.snakeproject;
+package com.example.snakeproject.Views;
 
 
-import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.util.Random;
-import java.awt.Graphics2D;
 
 
 import javafx.application.Platform;
 import javafx.scene.media.MediaPlayer;
-import javazoom.jl.player.Player;
 
 import javafx.scene.media.Media;
 

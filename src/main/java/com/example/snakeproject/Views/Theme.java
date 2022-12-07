@@ -1,8 +1,10 @@
-package com.example.snakeproject;
+package com.example.snakeproject.Views;
 
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 import java.util.LinkedList;
 
@@ -59,6 +61,11 @@ public class Theme {
 
     public void resetFood(){
         food = new FoodView();
+    }
+    public void drawScore(GraphicsContext g,int score){
+        g.setFont(new Font("Comic Sans", 30));
+        g.setFill(Color.MAGENTA);
+        g.strokeText("SCORE : " + score, 20, 40);
     }
 
 }

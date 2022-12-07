@@ -1,7 +1,7 @@
-package com.example.snakeproject;
+package com.example.snakeproject.Views;
 
 public class BombView extends FoodView  {
-    BombView(){
+    public BombView(){
         setI(util.getImage(("bomb")));
     }
 

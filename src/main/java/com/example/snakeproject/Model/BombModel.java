@@ -1,12 +1,13 @@
-package com.example.snakeproject;
+package com.example.snakeproject.Model;
 
+import com.example.snakeproject.Views.ImageUtil;
 import javafx.scene.image.Image;
 
 import java.util.Random;
 
 public class BombModel extends FoodModel{
 
-    BombModel(){
+    public BombModel(){
         setActive(true);
 
         System.out.println(new Random().nextInt(10));

@@ -35,6 +35,7 @@ public class LeaderBoardController implements Initializable {
 
     ObservableList<LeaderBoardEntry> list = FXCollections.observableArrayList();
 
+
     public boolean updateList() {
         File file = new File(CSV_PATH);
         list.clear();

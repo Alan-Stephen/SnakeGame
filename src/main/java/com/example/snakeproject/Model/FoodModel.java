@@ -1,5 +1,6 @@
-package com.example.snakeproject;
+package com.example.snakeproject.Model;
 
+import com.example.snakeproject.Views.ImageUtil;
 import javafx.scene.image.Image;
 
 import java.util.Random;
@@ -21,7 +22,6 @@ public class FoodModel extends ModelEntity
 	public FoodModel()	{
 		setActive(true);
 
-		System.out.println(new Random().nextInt(10));
 		Image i = ImageUtil.getInstance().getImage((String.valueOf(new Random().nextInt(10))));
 
 		this.setW((int) i.getWidth());

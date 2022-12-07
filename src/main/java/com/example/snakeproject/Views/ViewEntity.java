@@ -1,4 +1,4 @@
-package com.example.snakeproject;
+package com.example.snakeproject.Views;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;

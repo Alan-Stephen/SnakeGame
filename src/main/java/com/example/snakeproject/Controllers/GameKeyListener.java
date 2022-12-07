@@ -1,7 +1,7 @@
 package com.example.snakeproject.Controllers;
 
-import com.example.snakeproject.SnakeModel;
-import com.example.snakeproject.SnakeView;
+import com.example.snakeproject.Model.SnakeModel;
+import com.example.snakeproject.Views.SnakeView;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 

@@ -1,5 +1,6 @@
-package com.example.snakeproject;
+package com.example.snakeproject.Model;
 
+import com.example.snakeproject.Views.ImageUtil;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
@@ -14,6 +15,7 @@ import java.util.LinkedList;
 
 public class SnakeModel extends ModelEntity {
     private int length;
+    private final int SPEED_XY = 5;
     private SimpleIntegerProperty score = new SimpleIntegerProperty(0);
     private LinkedList<Point2D> bodyPoints = new LinkedList<>();
     private DIRECTION direction = DIRECTION.right;
@@ -123,7 +125,6 @@ public class SnakeModel extends ModelEntity {
      * */
     public void move() {
         // Leikjabreytan.
-        int SPEED_XY = 5;
         switch (direction){
             case down -> setY(getY() + SPEED_XY);
             case left ->  setX(getX() - SPEED_XY);
