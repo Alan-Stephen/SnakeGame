@@ -6,7 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 
-import javax.swing.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -19,7 +18,12 @@ public class SettingsController implements Initializable  {
 
     @FXML
     RadioButton gamemode1,gamemode2,gamemode3,gamemode4;
-
+    @FXML
+    RadioButton difficulty1;
+    @FXML
+    RadioButton difficulty2;
+    @FXML
+    RadioButton difficulty3;
     @FXML
     public
     Button backButton;
@@ -27,33 +31,49 @@ public class SettingsController implements Initializable  {
     private String snakeSelected = "snake1";
     private String backgroundSelected = "gameBackground0";
 
-    private String gamemodeSelected = "gamemode0";
-    
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        snake1.setSelected(true);
-        background1.setSelected(true);
-        gamemode4.setSelected(true);
+    private GameType.GameOption gamemodeSelected= GameType.GameOption.normal;
+    private GameType.Difficulty difficultySelected = GameType.Difficulty.easy;
+
+
+    public String getBGPath(){
+        return backgroundSelected;
+    }
+
+    public String getSnakeSelected(){return snakeSelected;}
+
+    public GameType getGameType(){
+        return new GameType(gamemodeSelected, difficultySelected);
     }
 
     @FXML
-    public void getGamemode(ActionEvent e) {
+    public void setGamemode(ActionEvent e) {
         if(gamemode1.isSelected()){
-            gamemodeSelected = "gamemode1";
+            gamemodeSelected = GameType.GameOption.immortal;
         } else if (gamemode2.isSelected()) {
-            gamemodeSelected = "gamemode2";
+            gamemodeSelected = GameType.GameOption.feast;
         } else if (gamemode3.isSelected()) {
-            gamemodeSelected = "gamemode3";
+            gamemodeSelected = GameType.GameOption.deadlyFood;
         } else if (gamemode4.isSelected()) {
-            gamemodeSelected = "gamemode0";
-        } else {
-            System.out.println("none other");
+            gamemodeSelected = GameType.GameOption.normal;
         }
-        System.out.println(gamemodeSelected);
     }
 
     @FXML
-    public void getSnake(ActionEvent e){
+    public void setDifficultySelected(ActionEvent e) {
+        if(difficulty1.isSelected()){
+            System.out.println("easy");
+            difficultySelected = GameType.Difficulty.easy;
+        } else if (difficulty2.isSelected()) {
+            System.out.println("medium");
+            difficultySelected = GameType.Difficulty.medium;
+        } else if (difficulty3.isSelected()) {
+            System.out.println("hard");
+            difficultySelected = GameType.Difficulty.hard;
+        }
+    }
+
+    @FXML
+    public void setSnake(ActionEvent e){
         if(snake1.isSelected()){
             snakeSelected = "snake1";
         } else if (snake2.isSelected()) {
@@ -64,7 +84,7 @@ public class SettingsController implements Initializable  {
         System.out.println(snakeSelected);
     }
     @FXML
-    public void getBackground(ActionEvent actionEvent) {
+    public void setBackground(ActionEvent actionEvent) {
         if(background1.isSelected()){
             backgroundSelected = "gameBackground0";
         } else if (background2.isSelected()) {
@@ -76,11 +96,12 @@ public class SettingsController implements Initializable  {
         }
     }
 
-    public String getBGPath(){
-        return backgroundSelected;
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        difficulty1.setSelected(true);
+        snake1.setSelected(true);
+        background1.setSelected(true);
+        gamemode4.setSelected(true);
     }
 
-    public String getSnakeSelected(){return snakeSelected;}
-
-    public String getGamemodeSelected(){return  gamemodeSelected;}
 }

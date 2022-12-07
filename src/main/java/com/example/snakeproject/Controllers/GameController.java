@@ -1,12 +1,13 @@
 package com.example.snakeproject.Controllers;
 
 
-import com.example.snakeproject.*;
+import com.example.snakeproject.Model.SnakeModel;
+import com.example.snakeproject.Views.SnakeView;
+import com.example.snakeproject.Views.Theme;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -43,10 +44,9 @@ public class GameController implements Initializable {
         return true;
     }
 
-    public void setGamemode(String gameType){
-        System.out.println("GameType : " + gameType);
-        gamemode = gamemodeFactory.getGamemode(gameType,theme,
-                canvas.getGraphicsContext2D(),snakeModel);
+    public void setGameType(GameType gameType){
+        gamemode = gamemodeFactory.getGamemode(theme,
+                canvas.getGraphicsContext2D(),snakeModel,gameType);
     }
 
     public void setTheme(Theme theme){
@@ -61,9 +61,6 @@ public class GameController implements Initializable {
     public void startGame() {
 
         timer = new AnimationTimer() {
-            GraphicsContext gc = canvas.getGraphicsContext2D();
-            int frame = 0;
-
             @Override
             public void handle(long l) {
                 gamemode.handle(l);
@@ -74,8 +71,8 @@ public class GameController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        gamemode = new DefaultGamemode(theme, canvas.getGraphicsContext2D(),
-                snakeModel);
+        gamemode = new Gamemode(theme, canvas.getGraphicsContext2D(),
+                snakeModel, GameType.Difficulty.easy);
         closeButton.setFocusTraversable(false);
         background.setImage(theme.getBackground());
     }

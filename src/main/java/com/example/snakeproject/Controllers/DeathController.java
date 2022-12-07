@@ -1,10 +1,9 @@
 package com.example.snakeproject.Controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.File;
@@ -22,24 +21,25 @@ public class DeathController implements Initializable {
     AnchorPane deathScene;
 
     @FXML
+    Label scoreLabel;
+    @FXML
     public
     Button submitButton;
 
     @FXML
     TextField nameField;
 
+    private final String LEADERBOARDS_PATH =
+            "src/main/resources/other/leaderBoards.csv";
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // submitButton.setOnAction( actionEvent -> {addToLeaderBoards();});
         Pattern pattern = Pattern.compile("[a-zA-Z]*");
-        UnaryOperator<TextFormatter.Change> filter = new UnaryOperator<TextFormatter.Change>() {
-            @Override
-            public TextFormatter.Change apply(TextFormatter.Change change) {
-                if (pattern.matcher(change.getControlNewText()).matches()) {
-                    return change ;
-                } else {
-                    return null ;
-                }
+        UnaryOperator<TextFormatter.Change> filter = change -> {
+            if (pattern.matcher(change.getControlNewText()).matches()) {
+                return change ;
+            } else {
+                return null ;
             }
         };
 
@@ -52,14 +52,22 @@ public class DeathController implements Initializable {
     public void addToLeaderBoards(int score){
         try {
             PrintWriter writer = new PrintWriter(new FileOutputStream(
-                    new File("src/main/resources/other/leaderBoards.csv"),
-                    true /* append = true */));
-            System.out.printf("%s, %d\n",getName(),score);
+                    LEADERBOARDS_PATH,
+                    true));
+
+            if(getName() == ""){
+                return;
+            }
             writer.printf("%s,%d\n",getName(),score);
             writer.close();
         } catch (Exception e){
+            System.out.println("ERROR : FILE NOT FOUND " + LEADERBOARDS_PATH);
             e.printStackTrace();
         }
         nameField.clear();
+    }
+
+    public void setScore(int score){
+        scoreLabel.setText(Integer.toString(score));
     }
 }
