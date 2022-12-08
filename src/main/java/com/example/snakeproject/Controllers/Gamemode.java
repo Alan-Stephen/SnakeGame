@@ -16,9 +16,9 @@ import java.util.ArrayList;
  * */
 public class Gamemode  {
 
-    private final int CANVAS_WIDTH = 870;
+    final int CANVAS_WIDTH = 870;
 
-    private final int CANVAS_HEIGHT = 560;
+    final int CANVAS_HEIGHT = 560;
 
     private final int BRICK_CAPACITY = 20;
 

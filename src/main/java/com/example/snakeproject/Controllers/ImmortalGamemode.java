@@ -12,11 +12,6 @@ import javafx.scene.text.Font;
  * */
 public class ImmortalGamemode extends Gamemode {
 
-
-    final int CANVAS_WIDTH = 870;
-
-    final int CANVAS_HEIGHT = 560;
-
     FoodModel foodModel = new FoodModel();
     /**
      * calls parent class constructor but with difficulty of easy, immortal
