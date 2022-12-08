@@ -65,14 +65,15 @@ public class DeathController implements Initializable {
      * @param score score of player to add to leaderboards.
      * */
     public void addToLeaderBoards(int score){
+        if(getName() == ""){
+            return;
+        }
         try {
+
             PrintWriter writer = new PrintWriter(new FileOutputStream(
                     LEADERBOARDS_PATH,
                     true));
 
-            if(getName() == ""){
-                return;
-            }
             writer.printf("%s,%d\n",getName(),score);
             writer.close();
         } catch (Exception e){

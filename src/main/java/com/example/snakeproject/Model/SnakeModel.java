@@ -4,6 +4,7 @@ import com.example.snakeproject.Views.ImageUtil;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 import java.util.LinkedList;
@@ -17,6 +18,7 @@ import java.util.LinkedList;
 
 public class SnakeModel extends ModelEntity {
 
+    private final int SNAKE_SIZE = 25;
     private final int CANVAS_WIDTH = 870;
     private final int CANVAS_HEIGHT = 560;
     private int length;
@@ -66,11 +68,10 @@ public class SnakeModel extends ModelEntity {
      * */
     public SnakeModel(int x, int y) {
         setActive(true);
-        Image i = ImageUtil.getInstance().getImage("snake_head_right");
         this.setX(x);
         this.setY(y);
-        this.setW((int) i.getWidth());
-        this.setH((int) i.getHeight());
+        this.setW(SNAKE_SIZE);
+        this.setH(SNAKE_SIZE);
 
         this.length = 1;
     }
@@ -105,9 +106,9 @@ public class SnakeModel extends ModelEntity {
      * @param e KeyEvent object used by method to figure out what key was
      *          pressed
      * */
-    public void keyPressed(KeyEvent e) {
+    public void keyPressed(KeyCode e) {
         // athugaðu lykilinn
-        switch (e.getCode())
+        switch (e)
         {
             case UP:
                 if (direction == DIRECTION.down) {}

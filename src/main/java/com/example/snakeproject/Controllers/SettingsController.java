@@ -84,13 +84,10 @@ public class SettingsController implements Initializable  {
     @FXML
     public void setDifficultySelected(ActionEvent e) {
         if(difficulty1.isSelected()){
-            System.out.println("easy");
             difficultySelected = GameType.Difficulty.easy;
         } else if (difficulty2.isSelected()) {
-            System.out.println("medium");
             difficultySelected = GameType.Difficulty.medium;
         } else if (difficulty3.isSelected()) {
-            System.out.println("hard");
             difficultySelected = GameType.Difficulty.hard;
         }
     }
@@ -108,7 +105,6 @@ public class SettingsController implements Initializable  {
         } else if (snake3.isSelected()) {
             snakeSelected = "snake3";
         }
-        System.out.println(snakeSelected);
     }
 
     /**

@@ -56,7 +56,6 @@ public class Gamemode  {
         foods.add(new FoodModel());
         foodsView.add(new FoodView());
 
-        System.out.println("DIFFICULTY : " + difficulty.ordinal());
         for(int i = 0; i < BRICK_MULT * difficulty.ordinal(); i++){
             bricks.add(new BrickModel());
             bricksView.add(new BrickView());

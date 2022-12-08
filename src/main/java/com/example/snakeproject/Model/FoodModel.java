@@ -13,19 +13,22 @@ import java.util.Random;
 public class FoodModel extends ModelEntity
 {
 
+	private final int FOOD_SIZE = 25;
+
 	private static final long serialVersionUID = -3641221053272056036L;
 
 
 	/**
-	 * generates food at random location with random icon.
+	 * generates food at random location with random icon. and sets
+	 * width and height of the food object so collisions can be calculated
 	 * */
 	public FoodModel()	{
 		setActive(true);
 
 		Image i = ImageUtil.getInstance().getImage((String.valueOf(new Random().nextInt(10))));
 
-		this.setW((int) i.getWidth());
-		this.setH((int) i.getHeight());
+		this.setW(FOOD_SIZE);
+		this.setH(FOOD_SIZE);
 
 		this.setX((int) (Math.random() * (870 - getW() + 10)));
 		this.setY((int) (Math.random() * (560 - getH() - 40)));

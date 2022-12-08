@@ -30,7 +30,6 @@ public class ImageUtil {
 	public Image getImage(String path){
 		return images.get(path);
 	}
-
 	GameUtil util = GameUtil.getInstance();
 	private final Map<String, Image> images = new HashMap<>();
 	{
