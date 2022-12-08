@@ -25,8 +25,6 @@ public class FoodModel extends ModelEntity
 	public FoodModel()	{
 		setActive(true);
 
-		Image i = ImageUtil.getInstance().getImage((String.valueOf(new Random().nextInt(10))));
-
 		this.setW(FOOD_SIZE);
 		this.setH(FOOD_SIZE);
 
