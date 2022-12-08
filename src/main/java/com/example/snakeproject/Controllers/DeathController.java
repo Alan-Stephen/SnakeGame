@@ -65,7 +65,7 @@ public class DeathController implements Initializable {
      * @param score score of player to add to leaderboards.
      * */
     public void addToLeaderBoards(int score){
-        if(getName() == ""){
+        if(getName().isEmpty()){
             return;
         }
         try {
