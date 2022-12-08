@@ -6,7 +6,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
 /**
- * Helper class with methods to handle images.
+ * Singleton helper class used to get Images from resources and rotate images.
  * */
 
 public class GameUtil {
@@ -22,7 +22,7 @@ public class GameUtil {
 
 	private GameUtil(){};
 	/**
-	 * returns image from path ImagePath
+	 * @return image from path ImagePath
 	 * @param imagePath path to get image from.
 	 * */
 	public Image getImage(String imagePath)
@@ -41,7 +41,9 @@ public class GameUtil {
 	}
 
 	/**
+	 *
 	 * rotates an iamge and returns it
+	 * @return rotated image
 	 * @param degree angle to rotate image
 	 * @param i image to rotate.
 	 * */

@@ -1,6 +1,7 @@
 package com.example.snakeproject;
 
 import com.example.snakeproject.Controllers.*;
+import com.example.snakeproject.Views.ImageUtil;
 import com.example.snakeproject.Views.MusicPlayer;
 import com.example.snakeproject.Views.Theme;
 import javafx.application.Application;
@@ -112,6 +113,7 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
         this.stage = stage;
         stage.setResizable(false);
+        stage.getIcons().add(ImageUtil.getInstance().getImage("icon"));
 
         // get loaders for every Scene.
         gameLoader = new FXMLLoader(getClass().getResource("/fxml/gameScene.fxml"));

@@ -8,6 +8,10 @@ import javafx.scene.text.Font;
 
 import java.util.LinkedList;
 
+/**
+ * Class holding Snake and food views so that the task of drawing can be
+ * abstracted. Theme instances should be used to draw images on canvas.
+ * */
 public class Theme {
 
     Image background;

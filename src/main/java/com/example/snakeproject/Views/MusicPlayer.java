@@ -10,7 +10,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.Media;
 
 /**
- * Plays music in seperate thread
+ * Class to handle playing sounds and music.
  *
  * */
 public class MusicPlayer extends Thread {
@@ -42,11 +42,18 @@ public class MusicPlayer extends Thread {
 		});
 	}
 
+	/**
+	 * stops music being played in player.
+	 * */
 	public void stopMusic(){
 		player.stop();
 	}
+
+	/**
+	 * loops the music being played infinetely
+	 * */
 	public void loopMusic(){
-		player.setCycleCount(99);
+		player.setCycleCount(Integer.MAX_VALUE);
 	}
 
 	/**

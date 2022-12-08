@@ -1,4 +1,4 @@
-package com.example.snakeproject;
+package com.example.snakeproject.Views;
 
 import com.example.snakeproject.Views.BombView;
 import com.example.snakeproject.Views.ImageUtil;

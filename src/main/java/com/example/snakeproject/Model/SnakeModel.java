@@ -8,15 +8,24 @@ import javafx.scene.input.KeyEvent;
 
 import java.util.LinkedList;
 
-// MORE MVC HERE , remove snake head
+
 /**
- * Handles game controls and drawing of the snake.
+ * Logical repersentation of the snake has methods to handle key presses,
+ * movement, collisions with body, checking if out of bounds and updating
+ * body points.
  * */
 
 public class SnakeModel extends ModelEntity {
+
+    private final int CANVAS_WIDTH = 870;
+    private final int CANVAS_HEIGHT = 560;
     private int length;
     private final int SPEED_XY = 5;
     private SimpleIntegerProperty score = new SimpleIntegerProperty(0);
+
+    // a linked list of points to repersent essentially where the snake
+    // has been, it is trimmed by updateBodyPoints to only hold a bodyPoints
+    // up to a certain length: length*bodyPointSpacing
     private LinkedList<Point2D> bodyPoints = new LinkedList<>();
     private DIRECTION direction = DIRECTION.right;
 
@@ -49,7 +58,8 @@ public class SnakeModel extends ModelEntity {
     // set length
     public void changeLength(int length) {this.length = length;}
 
-    /** Spawns snake at specified parameters.
+    /** Spawns snake at specified parameters and sets width and height of snake
+     * head.
      * @param x x coord of spawned snake
      * @param y y cord of spawned snake
      *
@@ -65,6 +75,13 @@ public class SnakeModel extends ModelEntity {
         this.length = 1;
     }
 
+    /**
+     * update bodyPoints according to the snakes current position
+     *
+     * @param bodyPointSpacing the size of a body point essentially used to
+     *                         measure how far away each body point should be
+     *                         from one another
+     * */
     public void updateBodyPoints(int bodyPointSpacing){
         bodyPoints.add(new Point2D(getX(), getY()));
 
@@ -73,20 +90,20 @@ public class SnakeModel extends ModelEntity {
             bodyPoints.remove(0);
         }
     }
-
-    public void update(int bodyPointSpacing){
-        checkIfAlive();
-        move();
-        updateBodyPoints(bodyPointSpacing);
-    }
-
+    /**
+     * calls outOfBounds and eatBody
+     * */
     public void checkIfAlive(){
         outofBounds();
         eatBody();
     }
 
     /**
-     * handles controls, rotates snake head appropriate direction when key pressed.
+     * handles controls, rotates snake head appropriate direction when key
+     * pressed by changing the value of direction variable
+     *
+     * @param e KeyEvent object used by method to figure out what key was
+     *          pressed
      * */
     public void keyPressed(KeyEvent e) {
         // athugaðu lykilinn
@@ -121,10 +138,10 @@ public class SnakeModel extends ModelEntity {
     }
 
 
-    /** changes velocity of snake depending on what key is pressed.
+    /** changes position of the snake depending on what direction
+     * direction variable is
      * */
     public void move() {
-        // Leikjabreytan.
         switch (direction){
             case down -> setY(getY() + SPEED_XY);
             case left ->  setX(getX() - SPEED_XY);
@@ -136,7 +153,12 @@ public class SnakeModel extends ModelEntity {
 
     //@Override
 
-    /** checks if two body points have colided if so ests l = false	*/
+    /**
+     * iterates through all points in bodyPoints to see if any points in
+     * body points are equal to another points in bodypoints whilst not
+     * being the same point object. if it is the case that a point in body
+     * points equals another point then active is set to false.
+     * */
     public void eatBody()
     {
         for (Point2D point : bodyPoints)
@@ -152,12 +174,12 @@ public class SnakeModel extends ModelEntity {
     }
 
     /**
-     * checks if snake position is out of bounds if so sets l.false.
+     * checks if snake position is out of bounds if so sets active to false.
      */
     public void outofBounds()
     {
-        boolean xOut = (getX() <= 0 || getX() >= (870));
-        boolean yOut = (getY() <= 0 || getY() >= (560));
+        boolean xOut = (getX() <= 0 || getX() >= (CANVAS_WIDTH));
+        boolean yOut = (getY() <= 0 || getY() >= (CANVAS_HEIGHT));
         if (xOut || yOut) {
             setActive(false);
         }

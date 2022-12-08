@@ -5,15 +5,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Helps image access by allocating images to a hashmap so they are easily and
- * effeciently available.
+ * Singleton class used to acesss images using a hashmap
  * */
 
-public class ImageUtil
-{
+public class ImageUtil {
 	private static ImageUtil instance;
 	private ImageUtil(){}
 
+	/**
+	 * @return returns instance of ImageUitl
+	 * */
 	public static ImageUtil getInstance(){
 		if(instance == null){
 			instance = new ImageUtil();
@@ -21,6 +22,11 @@ public class ImageUtil
 		return instance;
 	}
 
+	/**
+	 * @param path key used in hashmap.
+	 * @return image from hashmap based on key path
+	 * */
+	//
 	public Image getImage(String path){
 		return images.get(path);
 	}
@@ -68,5 +74,6 @@ public class ImageUtil
 		images.put("snake_body_3", util.getImage("snake-body_3.png"));
 		images.put("bomb", util.getImage("bomb.png"));
 		images.put("brick", util.getImage("brick.png"));
+		images.put("icon", util.getImage("snake-logo.png"));
 	}
 }

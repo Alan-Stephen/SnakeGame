@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="gameScene" prefHeight="560" prefWidth="870" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.snakeproject.Controllers.GameController">
+<AnchorPane fx:id="gameScene" prefHeight="560" prefWidth="870" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.snakeproject.Controllers.GameController">
    <children>
       <ImageView fx:id="background" fitHeight="560.0" fitWidth="870.0" pickOnBounds="true">
          <image>

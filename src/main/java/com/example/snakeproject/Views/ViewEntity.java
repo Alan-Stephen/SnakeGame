@@ -6,6 +6,9 @@ import javafx.scene.image.Image;
 import javax.swing.text.View;
 import javax.swing.text.html.parser.Entity;
 
+/**
+ * abstract class used to repersent any object visible on the game screen
+ * */
 public abstract class ViewEntity {
 
     private Image i;

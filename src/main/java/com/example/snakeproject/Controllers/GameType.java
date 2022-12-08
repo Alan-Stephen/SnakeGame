@@ -1,9 +1,14 @@
 package com.example.snakeproject.Controllers;
 
+
+/**
+ * holds gameType and difficulty variables and Enums to use to describe
+ * gamemode and difficulty.
+ * */
 public class GameType {
 
-    private GameOption gameType = GameOption.normal;
-    private Difficulty difficulty = Difficulty.easy;
+    private GameOption gameType;
+    private Difficulty difficulty;
 
     public GameOption getGameType() {
         return gameType;

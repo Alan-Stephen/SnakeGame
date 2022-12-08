@@ -5,21 +5,18 @@ import javafx.scene.image.Image;
 
 import java.util.Random;
 
+/**
+ * Model for bomb, extension of FoodModel, inherits it logical boundaries from
+ * it. primary difference is if BombModel is eaten snake is killed.
+ * */
 public class BombModel extends FoodModel{
 
-    public BombModel(){
-        setActive(true);
-
-        System.out.println(new Random().nextInt(10));
-        Image i = ImageUtil.getInstance().getImage("0");
-
-        this.setW((int) i.getWidth());
-        this.setH((int) i.getHeight());
-
-        this.setX((int) (Math.random() * (870 - getW() + 10)));
-        this.setY((int) (Math.random() * (560 - getH() - 40)));
-    }
-
+    /**
+     * checks if snake has colided with bomb if it has sets aliveProperty of
+     * snake to false.
+     *
+     * @param mySnake SnakeModel to use to see if it has colided with bomb.
+     * */
     @Override
     public void eaten(SnakeModel mySnake)	{
 

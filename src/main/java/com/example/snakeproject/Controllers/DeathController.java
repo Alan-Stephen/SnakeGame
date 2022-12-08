@@ -14,6 +14,11 @@ import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
 
+
+/**
+ * Controller for deathScene.fxml used to access player name from text field
+ * and adding a score to leaderboards.csv, allows access of deathScene nodes.
+ * */
 public class DeathController implements Initializable {
 
     @FXML
@@ -32,6 +37,13 @@ public class DeathController implements Initializable {
     private final String LEADERBOARDS_PATH =
             "src/main/resources/other/leaderBoards.csv";
 
+    public String getName(){return nameField.getText();}
+
+
+    /**
+     * called by javafx when scene is loaded, applies a TextFormater to
+     * nameField to only allow alphabetical characters to be entered.
+     * */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Pattern pattern = Pattern.compile("[a-zA-Z]*");
@@ -47,8 +59,11 @@ public class DeathController implements Initializable {
         nameField.setTextFormatter(formatter);
     }
 
-    public String getName(){return nameField.getText();}
-
+    /**
+     * adds player name and score to leaderboards.csv and resets nameField.
+     *
+     * @param score score of player to add to leaderboards.
+     * */
     public void addToLeaderBoards(int score){
         try {
             PrintWriter writer = new PrintWriter(new FileOutputStream(
@@ -67,6 +82,11 @@ public class DeathController implements Initializable {
         nameField.clear();
     }
 
+    /**
+     * sets text of scoreLabel to score
+     *
+     * @param score score to set to
+     * */
     public void setScore(int score){
         scoreLabel.setText(Integer.toString(score));
     }

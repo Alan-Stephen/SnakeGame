@@ -16,6 +16,10 @@ import java.util.Comparator;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
+/**
+ * controller for leaderboard.fxml, generates leaderboard table from
+ * leaderboard.csv
+ * */
 public class LeaderBoardController implements Initializable {
 
     public String CSV_PATH = "src/main/resources/other/leaderBoards.csv";
@@ -36,7 +40,11 @@ public class LeaderBoardController implements Initializable {
     ObservableList<LeaderBoardEntry> list = FXCollections.observableArrayList();
 
 
-    public boolean updateList() {
+
+    /**
+     * updates leaderboard table with updated information from leaderboards.csv
+     * */
+    public void updateList() {
         File file = new File(CSV_PATH);
         list.clear();
         try {
@@ -49,10 +57,17 @@ public class LeaderBoardController implements Initializable {
             }
             in.close();
         } catch (FileNotFoundException e) {
+            System.out.println("ERROR: CANNOT UPDATE LEADERBOARD");
             throw new RuntimeException(e);
         }
-        return true;
     }
+
+    /**
+     * Called when leaderboards.fxml is loaded which is launched, sets
+     * leaderboardsTable to track list, meaning additions to least will be
+     * reflected in the table. also refreshed list with information from
+     * leaderboards.csv by calling updateList
+     * */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         name.setCellValueFactory(

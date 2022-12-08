@@ -8,6 +8,9 @@ import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * controller class for menu, allows access of menu nodes.
+ * */
 public class MenuController implements Initializable {
     @FXML
     AnchorPane menu;

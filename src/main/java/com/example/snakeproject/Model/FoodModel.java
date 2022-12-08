@@ -6,9 +6,9 @@ import javafx.scene.image.Image;
 import java.util.Random;
 
 
-// TODO : MAKE FOOD FACTORY?
 /**
- * Explains itself.
+ * ModelEntity for food. is intialised to random location and has method
+ * to check if it has been eaten.
  * */
 public class FoodModel extends ModelEntity
 {

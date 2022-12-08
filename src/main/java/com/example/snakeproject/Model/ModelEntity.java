@@ -5,6 +5,11 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.shape.Rectangle;
 
 
+/**
+ * parent class for the model port of objects which appear on the GUI.
+ * can repersent their height,width, location on screen and the space they
+ * take up as a rectangle so collisions can be calculated.
+ * */
 public abstract class ModelEntity {
     private int x,y,h,w;
 
@@ -40,8 +45,6 @@ public abstract class ModelEntity {
         this.w = w;
     }
 
-    private SimpleBooleanProperty active = new SimpleBooleanProperty();
-
     public boolean getActive() {
         return active.get();
     }
@@ -54,6 +57,13 @@ public abstract class ModelEntity {
         this.active.set(active);
     }
 
+    // property so it's state can be tracked.
+    private SimpleBooleanProperty active = new SimpleBooleanProperty();
+
+    /**
+     * returns rectangle object describing its position and the area it takes
+     * up on te screen.
+     * */
     public Rectangle getRectangle()
     {
         return new Rectangle(x, y, w, h);
