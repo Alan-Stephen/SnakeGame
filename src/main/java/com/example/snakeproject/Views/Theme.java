@@ -14,12 +14,24 @@ import java.util.LinkedList;
  * */
 public class Theme {
 
-    Image background;
-    SnakeView snake;
+    private Image background;
+    private SnakeView snake;
 
-    FoodView food;
+    private FoodView food;
 
-    ImageUtil util = ImageUtil.getInstance();
+    public SnakeView getSnakeView(){
+        return snake;
+    }
+
+    public FoodView getFoodView(){
+        return food;
+    }
+
+    public Image getBackground() {
+        return background;
+    }
+
+    private ImageUtil util = ImageUtil.getInstance();
     public Theme(String bgPath, String snakeType){
         food = new FoodView();
         String snakePath = null;
@@ -45,18 +57,6 @@ public class Theme {
                           LinkedList<Point2D> bodyPoints){
         snake.draw(gc,x,y);
         snake.drawBody(gc,bodyPoints);
-    }
-
-    public SnakeView getSnakeView(){
-        return snake;
-    }
-
-    public FoodView getFoodView(){
-        return food;
-    }
-
-    public Image getBackground() {
-        return background;
     }
 
     public void drawFood(GraphicsContext gc, int x, int y){
